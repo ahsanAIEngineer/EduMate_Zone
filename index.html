@@ -1,0 +1,2657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduMate Zone | Learn • Share • Grow Together</title>
+
+    <meta name="description"
+          content="EduMate Zone — Your Educational Partner. Academic updates, study resources, scholarships, admissions, internships, jobs and career opportunities for students.">
+
+    <meta name="theme-color" content="#6c63ff">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <style>
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #f7f8fc;
+            color: #15162b;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background .3s ease, color .3s ease;
+        }
+
+        body.dark {
+            background: #0b0d18;
+            color: #f4f5ff;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        /* =========================================================
+           VARIABLES
+        ========================================================= */
+
+        :root {
+            --primary: #6c63ff;
+            --primary-dark: #554ce8;
+            --secondary: #8b5cf6;
+            --cyan: #06b6d4;
+            --green: #25d366;
+            --text: #15162b;
+            --muted: #686b82;
+            --white: #ffffff;
+            --bg: #f7f8fc;
+            --card: #ffffff;
+            --border: rgba(20, 22, 50, .08);
+            --shadow: 0 18px 50px rgba(50, 42, 120, .08);
+        }
+
+        body.dark {
+            --text: #f4f5ff;
+            --muted: #a9adc2;
+            --bg: #0b0d18;
+            --card: #121526;
+            --border: rgba(255,255,255,.08);
+            --shadow: 0 20px 60px rgba(0,0,0,.3);
+        }
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            background: rgba(247,248,252,.78);
+            border-bottom: 1px solid var(--border);
+        }
+
+        body.dark header {
+            background: rgba(11,13,24,.78);
+        }
+
+        .nav {
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 45px;
+            height: 45px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-size: 22px;
+            font-weight: 800;
+            box-shadow: 0 10px 25px rgba(108,99,255,.3);
+        }
+
+        .brand-text {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-weight: 800;
+            font-size: 19px;
+            letter-spacing: -.5px;
+        }
+
+        .brand-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 27px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: var(--muted);
+            font-weight: 600;
+            transition: .25s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .icon-btn {
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            border-radius: 13px;
+            cursor: pointer;
+            font-size: 17px;
+            transition: .25s ease;
+        }
+
+        .icon-btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
+        .menu-btn {
+            display: none;
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 760px;
+            padding-top: 145px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 550px;
+            height: 550px;
+            background: rgba(108,99,255,.14);
+            border-radius: 50%;
+            filter: blur(80px);
+            top: 40px;
+            left: -220px;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(6,182,212,.10);
+            border-radius: 50%;
+            filter: blur(90px);
+            right: -200px;
+            top: 160px;
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1.08fr .92fr;
+            align-items: center;
+            gap: 70px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(108,99,255,.09);
+            border: 1px solid rgba(108,99,255,.15);
+            color: var(--primary);
+            padding: 8px 13px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 23px;
+        }
+
+        .hero h1 {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: clamp(42px, 6vw, 72px);
+            line-height: 1.04;
+            letter-spacing: -3px;
+            max-width: 700px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #6c63ff, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-description {
+            color: var(--muted);
+            max-width: 620px;
+            font-size: 17px;
+            margin: 25px 0 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            border: none;
+            cursor: pointer;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: .25s ease;
+        }
+
+        .btn-primary {
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: 0 13px 30px rgba(108,99,255,.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 35px rgba(108,99,255,.32);
+        }
+
+        .btn-outline {
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+
+        .btn-whatsapp {
+            color: white;
+            background: var(--green);
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Hero visual */
+
+        .hero-visual {
+            position: relative;
+            min-height: 450px;
+        }
+
+        .dashboard {
+            position: absolute;
+            width: 100%;
+            max-width: 490px;
+            right: 0;
+            top: 20px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            padding: 18px;
+            transform: rotate(2deg);
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%,100% { transform: translateY(0) rotate(2deg); }
+            50% { transform: translateY(-12px) rotate(1deg); }
+        }
+
+        .dash-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 5px 18px;
+        }
+
+        .dash-title {
+            font-weight: 800;
+            font-size: 17px;
+        }
+
+        .online {
+            font-size: 11px;
+            padding: 6px 9px;
+            background: rgba(37,211,102,.1);
+            color: #16a34a;
+            border-radius: 100px;
+            font-weight: 700;
+        }
+
+        .hero-card {
+            padding: 22px;
+            border-radius: 21px;
+            background: linear-gradient(135deg, #6c63ff, #8b5cf6);
+            color: white;
+            margin-bottom: 13px;
+        }
+
+        .hero-card small {
+            opacity: .8;
+        }
+
+        .hero-card h3 {
+            margin-top: 8px;
+            font-size: 25px;
+        }
+
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 12px;
+        }
+
+        .mini-card {
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: var(--bg);
+        }
+
+        .mini-icon {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .mini-card strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .mini-card span {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .floating-stat {
+            position: absolute;
+            left: -30px;
+            bottom: 40px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            border-radius: 18px;
+            padding: 16px 19px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .stat-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            background: rgba(6,182,212,.1);
+            color: var(--cyan);
+        }
+
+        .floating-stat strong {
+            display: block;
+            font-size: 16px;
+        }
+
+        .floating-stat span {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        /* =========================================================
+           GENERAL SECTIONS
+        ========================================================= */
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 48px;
+        }
+
+        .section-tag {
+            color: var(--primary);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.7px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: clamp(30px, 4vw, 45px);
+            line-height: 1.12;
+            letter-spacing: -1.7px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            margin-top: 13px;
+        }
+
+        /* =========================================================
+           FEATURE CARDS
+        ========================================================= */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 16px;
+        }
+
+        .feature-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: .3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(108,99,255,.25);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            font-size: 23px;
+            background: rgba(108,99,255,.1);
+            margin-bottom: 17px;
+        }
+
+        .feature-card h3 {
+            font-size: 16px;
+            margin-bottom: 7px;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* =========================================================
+           SEMESTERS
+        ========================================================= */
+
+        .semester-section {
+            background: var(--card);
+        }
+
+        .semester-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 18px;
+        }
+
+        .semester-card {
+            position: relative;
+            overflow: hidden;
+            padding: 27px;
+            border-radius: 23px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            transition: .3s ease;
+        }
+
+        .semester-card:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--shadow);
+        }
+
+        .semester-number {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .semester-card h3 {
+            margin: 9px 0 6px;
+            font-size: 23px;
+        }
+
+        .semester-card p {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 19px;
+        }
+
+        .semester-card .btn {
+            width: 100%;
+        }
+
+        .coming {
+            opacity: .7;
+        }
+
+        .coming .btn {
+            cursor: not-allowed;
+        }
+
+        /* =========================================================
+           COMMUNITY
+        ========================================================= */
+
+        .community {
+            background: linear-gradient(135deg, #11142a, #1c1740);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .community::before {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(108,99,255,.28);
+            filter: blur(90px);
+            right: -100px;
+            top: -180px;
+        }
+
+        .community-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .community .section-tag {
+            color: #a9a3ff;
+        }
+
+        .community h2 {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: clamp(30px,4vw,48px);
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+        }
+
+        .community p {
+            color: #b6b9ca;
+            margin: 17px 0 26px;
+        }
+
+        .community-box {
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 25px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .community-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .community-item:last-child {
+            border-bottom: 0;
+        }
+
+        .community-left {
+            display: flex;
+            gap: 13px;
+            align-items: center;
+        }
+
+        .community-left .icon {
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            border-radius: 13px;
+            background: rgba(255,255,255,.08);
+        }
+
+        .community-left strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .community-left span {
+            display: block;
+            font-size: 11px;
+            color: #999caf;
+        }
+
+        .small-btn {
+            padding: 9px 13px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
+            background: rgba(255,255,255,.1);
+            transition: .2s;
+        }
+
+        .small-btn:hover {
+            background: rgba(255,255,255,.18);
+        }
+
+        /* =========================================================
+           OPPORTUNITIES
+        ========================================================= */
+
+        .filter-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 28px;
+        }
+
+        .filter-btn {
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--muted);
+            border-radius: 100px;
+            padding: 9px 16px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 700;
+            transition: .2s;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            color: white;
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 18px;
+        }
+
+        .opportunity-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 23px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            transition: .3s ease;
+        }
+
+        .opportunity-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .opp-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 17px;
+        }
+
+        .opp-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            background: rgba(108,99,255,.1);
+        }
+
+        .opp-type {
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--primary);
+            padding: 6px 9px;
+            border-radius: 100px;
+            background: rgba(108,99,255,.09);
+        }
+
+        .opportunity-card h3 {
+            font-size: 17px;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+
+        .opportunity-card p {
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 15px;
+        }
+
+        .opp-meta {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .opp-meta span {
+            font-size: 10px;
+            color: var(--muted);
+            padding: 6px 9px;
+            border-radius: 8px;
+            background: var(--bg);
+        }
+
+        .opportunity-card .btn {
+            width: 100%;
+        }
+
+        /* =========================================================
+           BS COMMUNITY
+        ========================================================= */
+
+        .bs-section {
+            background: var(--card);
+        }
+
+        .bs-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 14px;
+        }
+
+        .bs-item {
+            border: 1px solid var(--border);
+            background: var(--bg);
+            border-radius: 17px;
+            padding: 18px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: .25s;
+        }
+
+        .bs-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+
+        /* =========================================================
+           ADMIN SUPPORT
+        ========================================================= */
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 18px;
+        }
+
+        .support-card {
+            padding: 26px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: var(--card);
+            box-shadow: var(--shadow);
+        }
+
+        .support-icon {
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        .support-card h3 {
+            font-size: 17px;
+            margin-bottom: 7px;
+        }
+
+        .support-card p {
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 16px;
+        }
+
+        /* =========================================================
+           RULES
+        ========================================================= */
+
+        .rules-box {
+            max-width: 900px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 12px;
+        }
+
+        .rule {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 15px;
+        }
+
+        .rule-icon {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .rule span {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* =========================================================
+           CTA
+        ========================================================= */
+
+        .cta {
+            padding: 85px 0;
+        }
+
+        .cta-box {
+            border-radius: 30px;
+            padding: 60px 30px;
+            text-align: center;
+            color: white;
+            background: linear-gradient(135deg,#6c63ff,#8b5cf6,#06b6d4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 50px solid rgba(255,255,255,.07);
+            right: -100px;
+            top: -130px;
+        }
+
+        .cta-box h2 {
+            position: relative;
+            z-index: 2;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: clamp(30px,4vw,48px);
+            letter-spacing: -1.5px;
+        }
+
+        .cta-box p {
+            position: relative;
+            z-index: 2;
+            max-width: 620px;
+            margin: 13px auto 25px;
+            color: rgba(255,255,255,.85);
+        }
+
+        .cta-box .hero-buttons {
+            position: relative;
+            z-index: 3;
+            justify-content: center;
+        }
+
+        .cta-box .btn-outline {
+            background: rgba(255,255,255,.12);
+            color: white;
+            border-color: rgba(255,255,255,.25);
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            padding: 55px 0 25px;
+            background: #0b0d18;
+            color: white;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 45px;
+        }
+
+        footer .brand-text {
+            color: white;
+        }
+
+        .footer-description {
+            color: #969aad;
+            font-size: 12px;
+            max-width: 320px;
+            margin-top: 15px;
+        }
+
+        .footer-col h4 {
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #9296a9;
+            font-size: 12px;
+            margin-bottom: 9px;
+            transition: .2s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,.08);
+            padding-top: 22px;
+            color: #777b90;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        /* =========================================================
+           SCROLL REVEAL
+        ========================================================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1000px) {
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                min-height: 500px;
+                max-width: 600px;
+                width: 100%;
+                margin: auto;
+            }
+
+            .dashboard {
+                left: 50%;
+                transform: translateX(-50%) rotate(2deg);
+            }
+
+            .features,
+            .semester-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .opportunity-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .bs-grid {
+                grid-template-columns: repeat(3,1fr);
+            }
+
+            .community-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .nav {
+                height: 68px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 68px;
+                left: 4%;
+                right: 4%;
+                padding: 20px;
+                background: var(--card);
+                border: 1px solid var(--border);
+                border-radius: 18px;
+                box-shadow: var(--shadow);
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 10px;
+            }
+
+            .menu-btn {
+                display: inline-grid;
+                place-items: center;
+            }
+
+            .hero {
+                padding-top: 115px;
+                min-height: auto;
+                padding-bottom: 70px;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .hero-visual {
+                min-height: 430px;
+            }
+
+            .dashboard {
+                max-width: 94%;
+            }
+
+            .floating-stat {
+                left: 0;
+                bottom: 15px;
+            }
+
+            section {
+                padding: 75px 0;
+            }
+
+            .features,
+            .semester-grid,
+            .opportunity-grid,
+            .support-grid,
+            .rules-box {
+                grid-template-columns: 1fr;
+            }
+
+            .bs-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .community-grid {
+                gap: 35px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .brand-text {
+                font-size: 16px;
+            }
+
+            .brand-logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .nav-actions .icon-btn:first-child {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .mini-grid {
+                gap: 8px;
+            }
+
+            .mini-card {
+                padding: 14px;
+            }
+
+            .bs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+    <div class="container nav">
+
+        <a href="#home" class="brand">
+            <div class="brand-logo">E</div>
+
+            <div class="brand-text">
+                EduMate <span>Zone</span>
+            </div>
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#resources">Resources</a>
+            <a href="#opportunities">Opportunities</a>
+            <a href="#community">Community</a>
+            <a href="#support">Support</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="icon-btn" id="themeBtn" title="Toggle theme">☾</button>
+
+            <button class="icon-btn menu-btn" id="menuBtn">
+                ☰
+            </button>
+        </div>
+
+    </div>
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<main>
+
+<section class="hero" id="home">
+
+    <div class="container hero-grid">
+
+        <div class="hero-content reveal">
+
+            <div class="badge">
+                ✨ Your Educational Partner
+            </div>
+
+            <h1>
+                Learn.
+                <span class="gradient-text">Share.</span>
+                Grow.
+                <br>
+                Together.
+            </h1>
+
+            <p class="hero-description">
+                EduMate Zone is a student-focused academic community bringing
+                together study resources, university updates, scholarships,
+                admissions, internships, jobs, career guidance and opportunities
+                — all in one place.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="https://chat.whatsapp.com/DuQeDwmpBmv9L35IfSlMuW"
+                    target="_blank"
+                    class="btn btn-primary">
+                    💬 Join WhatsApp Group
+                </a>
+
+                <a
+                    href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
+                    target="_blank"
+                    class="btn btn-outline">
+                    📢 Follow Channel
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-visual reveal">
+
+            <div class="dashboard">
+
+                <div class="dash-top">
+
+                    <div class="dash-title">
+                        EduMate Dashboard
+                    </div>
+
+                    <div class="online">
+                        ● Active Community
+                    </div>
+
+                </div>
+
+                <div class="hero-card">
+
+                    <small>EDUMATE ZONE</small>
+
+                    <h3>
+                        Your Academic Journey,
+                        Simplified.
+                    </h3>
+
+                    <p style="font-size:12px;margin-top:8px;color:rgba(255,255,255,.78)">
+                        Resources • Opportunities • Guidance
+                    </p>
+
+                </div>
+
+                <div class="mini-grid">
+
+                    <div class="mini-card">
+                        <div class="mini-icon">📚</div>
+                        <strong>Study Resources</strong>
+                        <span>Notes & past papers</span>
+                    </div>
+
+                    <div class="mini-card">
+                        <div class="mini-icon">🎓</div>
+                        <strong>Admissions</strong>
+                        <span>Pakistan & abroad</span>
+                    </div>
+
+                    <div class="mini-card">
+                        <div class="mini-icon">💼</div>
+                        <strong>Career</strong>
+                        <span>Jobs & internships</span>
+                    </div>
+
+                    <div class="mini-card">
+                        <div class="mini-icon">🏆</div>
+                        <strong>Scholarships</strong>
+                        <span>New opportunities</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="floating-stat">
+
+                <div class="stat-icon">
+                    🎯
+                </div>
+
+                <div>
+                    <strong>Stay Updated</strong>
+                    <span>Academic opportunities</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WHAT YOU GET
+========================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="section-tag">
+                What You Get
+            </div>
+
+            <h2>
+                Everything students need,
+                in one community.
+            </h2>
+
+            <p>
+                From academic resources to career opportunities,
+                EduMate Zone keeps students connected and informed.
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+            <div class="feature-card reveal">
+                <div class="feature-icon">📢</div>
+                <h3>Academic Updates</h3>
+                <p>
+                    University, college, admission and latest educational updates.
+                </p>
+            </div>
+
+            <div class="feature-card reveal">
+                <div class="feature-icon">📚</div>
+                <h3>Study Materials</h3>
+                <p>
+                    Notes, guess papers, pairing schemes, past papers and test sessions.
+                </p>
+            </div>
+
+            <div class="feature-card reveal">
+                <div class="feature-icon">🎓</div>
+                <h3>Admissions</h3>
+                <p>
+                    Admission opportunities from universities and colleges in Pakistan and abroad.
+                </p>
+            </div>
+
+            <div class="feature-card reveal">
+                <div class="feature-icon">💰</div>
+                <h3>Scholarships</h3>
+                <p>
+                    Discover scholarship opportunities and funding information.
+                </p>
+            </div>
+
+            <div class="feature-card reveal">
+                <div class="feature-icon">💼</div>
+                <h3>Jobs & Careers</h3>
+                <p>
+                    Job alerts, career guidance and professional opportunities.
+                </p>
+            </div>
+
+            <div class="feature-card reveal">
+                <div class="feature-icon">🚀</div>
+                <h3>Internships</h3>
+                <p>
+                    Local and international internships and student programs.
+                </p>
+            </div>
+
+            <div class="feature-card reveal">
+                <div class="feature-icon">📝</div>
+                <h3>Entry Tests</h3>
+                <p>
+                    Entry test updates and preparation guidance for students.
+                </p>
+            </div>
+
+            <div class="feature-card reveal">
+                <div class="feature-icon">💡</div>
+                <h3>Student Opportunities</h3>
+                <p>
+                    Business opportunities, government schemes and student programs.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SEMESTER RESOURCES
+========================================================= -->
+
+<section class="semester-section" id="resources">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="section-tag">
+                Study Resources
+            </div>
+
+            <h2>
+                Find your semester resources.
+            </h2>
+
+            <p>
+                Access the available semester resource folders
+                and keep your academic material organized.
+            </p>
+
+        </div>
+
+
+        <div class="semester-grid">
+
+            <div class="semester-card reveal">
+
+                <div class="semester-number">
+                    Semester 01
+                </div>
+
+                <h3>Semester 1</h3>
+
+                <p>
+                    Access study resources and academic material
+                    for first semester students.
+                </p>
+
+                <a
+                    class="btn btn-primary"
+                    href="https://drive.google.com/drive/folders/1OE05gKi6f1RuoFa64ZPaisopQfl9jOp"
+                    target="_blank">
+                    📂 Open Resources
+                </a>
+
+            </div>
+
+
+            <div class="semester-card reveal">
+
+                <div class="semester-number">
+                    Semester 02
+                </div>
+
+                <h3>Semester 2</h3>
+
+                <p>
+                    Study materials and resources for second semester students.
+                </p>
+
+                <a
+                    class="btn btn-primary"
+                    href="https://drive.google.com/drive/folders/1oRp55KLYog-QigmHVGmTCOM9KQg6D7OD"
+                    target="_blank">
+                    📂 Open Resources
+                </a>
+
+            </div>
+
+
+            <div class="semester-card reveal">
+
+                <div class="semester-number">
+                    Semester 03
+                </div>
+
+                <h3>Semester 3</h3>
+
+                <p>
+                    Academic resources for third semester students.
+                </p>
+
+                <a
+                    class="btn btn-primary"
+                    href="https://drive.google.com/drive/folders/1cZ5poXTnVUYLmc95Q6pmyYeRD_ElJum"
+                    target="_blank">
+                    📂 Open Resources
+                </a>
+
+            </div>
+
+
+            <div class="semester-card coming reveal">
+
+                <div class="semester-number">
+                    Semester 04
+                </div>
+
+                <h3>Semester 4</h3>
+
+                <p>
+                    Resources for Semester 4 will be added soon.
+                </p>
+
+                <button
+                    class="btn btn-outline"
+                    disabled>
+                    ⏳ Coming Soon
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     COMMUNITY
+========================================================= -->
+
+<section class="community" id="community">
+
+    <div class="container community-grid">
+
+        <div class="reveal">
+
+            <div class="section-tag">
+                Stay Connected
+            </div>
+
+            <h2>
+                Your academic community is just one click away.
+            </h2>
+
+            <p>
+                Join EduMate Zone on WhatsApp and stay connected
+                with academic updates, resources and student opportunities.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="https://chat.whatsapp.com/DuQeDwmpBmv9L35IfSlMuW"
+                    target="_blank"
+                    class="btn btn-whatsapp">
+                    💬 Join Community
+                </a>
+
+                <a
+                    href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
+                    target="_blank"
+                    class="btn btn-outline">
+                    📢 Open Channel
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="community-box reveal">
+
+            <div class="community-item">
+
+                <div class="community-left">
+
+                    <div class="icon">💬</div>
+
+                    <div>
+                        <strong>Main WhatsApp Group</strong>
+                        <span>Connect with students</span>
+                    </div>
+
+                </div>
+
+                <a
+                    href="https://chat.whatsapp.com/DuQeDwmpBmv9L35IfSlMuW"
+                    target="_blank"
+                    class="small-btn">
+                    JOIN
+                </a>
+
+            </div>
+
+
+            <div class="community-item">
+
+                <div class="community-left">
+
+                    <div class="icon">📢</div>
+
+                    <div>
+                        <strong>EduMate Channel</strong>
+                        <span>Daily educational updates</span>
+                    </div>
+
+                </div>
+
+                <a
+                    href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
+                    target="_blank"
+                    class="small-btn">
+                    FOLLOW
+                </a>
+
+            </div>
+
+
+            <div class="community-item">
+
+                <div class="community-left">
+
+                    <div class="icon">🌐</div>
+
+                    <div>
+                        <strong>All BS Programs</strong>
+                        <span>Connect across disciplines</span>
+                    </div>
+
+                </div>
+
+                <span class="small-btn">
+                    COMMUNITY
+                </span>
+
+            </div>
+
+
+            <div class="community-item">
+
+                <div class="community-left">
+
+                    <div class="icon">📚</div>
+
+                    <div>
+                        <strong>Academic Resources</strong>
+                        <span>Notes & study material</span>
+                    </div>
+
+                </div>
+
+                <a
+                    href="#resources"
+                    class="small-btn">
+                    EXPLORE
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     OPPORTUNITIES
+========================================================= -->
+
+<section id="opportunities">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="section-tag">
+                Opportunities
+            </div>
+
+            <h2>
+                Jobs, scholarships & opportunities.
+            </h2>
+
+            <p>
+                A preview of the kinds of opportunities shared
+                through EduMate Zone.
+            </p>
+
+        </div>
+
+
+        <div class="filter-row">
+
+            <button class="filter-btn active" data-filter="all">
+                All
+            </button>
+
+            <button class="filter-btn" data-filter="job">
+                Jobs
+            </button>
+
+            <button class="filter-btn" data-filter="scholarship">
+                Scholarships
+            </button>
+
+            <button class="filter-btn" data-filter="government">
+                Government
+            </button>
+
+        </div>
+
+
+        <div class="opportunity-grid">
+
+
+            <!-- JOB -->
+
+            <article class="opportunity-card reveal" data-category="job">
+
+                <div class="opp-top">
+
+                    <div class="opp-icon">
+                        📱
+                    </div>
+
+                    <span class="opp-type">
+                        JOB
+                    </span>
+
+                </div>
+
+                <h3>
+                    Social Media Executive
+                </h3>
+
+                <p>
+                    Creative role involving social media management,
+                    content planning, audience engagement and growth.
+                </p>
+
+                <div class="opp-meta">
+
+                    <span>📍 Lahore</span>
+                    <span>🌙 Night Shift</span>
+                    <span>🛒 E-commerce</span>
+
+                </div>
+
+                <a
+                    href="mailto:hr@firstmfg.com"
+                    class="btn btn-primary">
+                    📩 Application Info
+                </a>
+
+            </article>
+
+
+            <!-- JOB -->
+
+            <article class="opportunity-card reveal" data-category="job">
+
+                <div class="opp-top">
+
+                    <div class="opp-icon">
+                        🎬
+                    </div>
+
+                    <span class="opp-type">
+                        JOB
+                    </span>
+
+                </div>
+
+                <h3>
+                    AI Video Editor
+                </h3>
+
+                <p>
+                    Video editing opportunity for candidates interested
+                    in AI-powered video content.
+                </p>
+
+                <div class="opp-meta">
+
+                    <span>📍 Lahore</span>
+                    <span>🤖 AI Video</span>
+
+                </div>
+
+                <a
+                    href="mailto:mishal.searchopal@gmail.com"
+                    class="btn btn-primary">
+                    📩 Contact
+                </a>
+
+            </article>
+
+
+            <!-- JOB -->
+
+            <article class="opportunity-card reveal" data-category="job">
+
+                <div class="opp-top">
+
+                    <div class="opp-icon">
+                        🎥
+                    </div>
+
+                    <span class="opp-type">
+                        JOB
+                    </span>
+
+                </div>
+
+                <h3>
+                    UGC Video Editor
+                </h3>
+
+                <p>
+                    Video editing opportunity for UGC content
+                    and creative digital media.
+                </p>
+
+                <div class="opp-meta">
+
+                    <span>📍 Islamabad</span>
+                    <span>🎥 UGC</span>
+
+                </div>
+
+                <a
+                    href="mailto:mishal.searchopal@gmail.com"
+                    class="btn btn-primary">
+                    📩 Contact
+                </a>
+
+            </article>
+
+
+            <!-- SCHOLARSHIP -->
+
+            <article class="opportunity-card reveal" data-category="scholarship">
+
+                <div class="opp-top">
+
+                    <div class="opp-icon">
+                        🇬🇧
+                    </div>
+
+                    <span class="opp-type">
+                        SCHOLARSHIP
+                    </span>
+
+                </div>
+
+                <h3>
+                    Gates Cambridge Scholarship 2027
+                </h3>
+
+                <p>
+                    Fully funded postgraduate scholarship opportunity
+                    at the University of Cambridge.
+                </p>
+
+                <div class="opp-meta">
+
+                    <span>🇬🇧 UK</span>
+                    <span>🎓 Postgraduate</span>
+                    <span>💯 Fully Funded</span>
+
+                </div>
+
+                <a
+                    href="https://globalgleaning.com/gates-cambridge-scholarship-2027-in-uk-fully-funded/"
+                    target="_blank"
+                    class="btn btn-primary">
+                    🔗 View Opportunity
+                </a>
+
+            </article>
+
+
+            <!-- GOVERNMENT -->
+
+            <article class="opportunity-card reveal" data-category="government">
+
+                <div class="opp-top">
+
+                    <div class="opp-icon">
+                        🏥
+                    </div>
+
+                    <span class="opp-type">
+                        GOVERNMENT
+                    </span>
+
+                </div>
+
+                <h3>
+                    Punjab Rural Health Centre Update
+                </h3>
+
+                <p>
+                    An educational/news update regarding the reported
+                    plan to upgrade 300 Rural Health Centres in Punjab.
+                </p>
+
+                <div class="opp-meta">
+
+                    <span>🇵🇰 Punjab</span>
+                    <span>🏥 Health</span>
+
+                </div>
+
+                <a
+                    href="#"
+                    onclick="showNotice(event)"
+                    class="btn btn-outline">
+                    ℹ️ Read Update
+                </a>
+
+            </article>
+
+
+            <!-- GENERAL -->
+
+            <article class="opportunity-card reveal" data-category="all">
+
+                <div class="opp-top">
+
+                    <div class="opp-icon">
+                        🚀
+                    </div>
+
+                    <span class="opp-type">
+                        MORE
+                    </span>
+
+                </div>
+
+                <h3>
+                    More Opportunities Coming
+                </h3>
+
+                <p>
+                    Jobs, internships, scholarships, admissions,
+                    competitions and student programs can be added here.
+                </p>
+
+                <div class="opp-meta">
+
+                    <span>💼 Jobs</span>
+                    <span>🎓 Scholarships</span>
+                    <span>🚀 Internships</span>
+
+                </div>
+
+                <a
+                    href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
+                    target="_blank"
+                    class="btn btn-primary">
+                    📢 Follow Updates
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ALL BS PROGRAMS
+========================================================= -->
+
+<section class="bs-section">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="section-tag">
+                Student Community
+            </div>
+
+            <h2>
+                One community for BS students.
+            </h2>
+
+            <p>
+                Connect with talented students from different
+                academic disciplines, share knowledge and grow together.
+            </p>
+
+        </div>
+
+
+        <div class="bs-grid">
+
+            <div class="bs-item reveal">💻 Computer Science</div>
+            <div class="bs-item reveal">🖥️ Information Technology</div>
+            <div class="bs-item reveal">⚙️ Engineering</div>
+            <div class="bs-item reveal">🤖 Mechatronics</div>
+            <div class="bs-item reveal">📊 Accounting</div>
+            <div class="bs-item reveal">💰 Finance</div>
+            <div class="bs-item reveal">📈 Economics</div>
+            <div class="bs-item reveal">📣 Marketing</div>
+            <div class="bs-item reveal">🎨 Designing</div>
+            <div class="bs-item reveal">🔍 SEO</div>
+            <div class="bs-item reveal">📱 App Development</div>
+            <div class="bs-item reveal">🎓 Other BS Programs</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SUPPORT
+========================================================= -->
+
+<section id="support">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="section-tag">
+                Admin Support
+            </div>
+
+            <h2>
+                Need academic guidance?
+            </h2>
+
+            <p>
+                Find the relevant support area for your academic
+                or career-related query.
+            </p>
+
+        </div>
+
+
+        <div class="support-grid">
+
+            <div class="support-card reveal">
+
+                <div class="support-icon">
+                    💻
+                </div>
+
+                <h3>
+                    Computer & IT
+                </h3>
+
+                <p>
+                    Support for CS, IT and computer-related academic queries.
+                </p>
+
+                <a
+                    href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
+                    target="_blank"
+                    class="btn btn-outline">
+                    Contact Support
+                </a>
+
+            </div>
+
+
+            <div class="support-card reveal">
+
+                <div class="support-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Business & Finance
+                </h3>
+
+                <p>
+                    Support related to accounting, finance, economics,
+                    marketing, SEO, designing and app development.
+                </p>
+
+                <a
+                    href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
+                    target="_blank"
+                    class="btn btn-outline">
+                    Contact Support
+                </a>
+
+            </div>
+
+
+            <div class="support-card reveal">
+
+                <div class="support-icon">
+                    ⚙️
+                </div>
+
+                <h3>
+                    Engineering & Mechatronics
+                </h3>
+
+                <p>
+                    Guidance for engineering and mechatronics-related queries.
+                </p>
+
+                <a
+                    href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
+                    target="_blank"
+                    class="btn btn-outline">
+                    Contact Support
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     COMMUNITY RULES
+========================================================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="section-tag">
+                Community Guidelines
+            </div>
+
+            <h2>
+                Keep EduMate Zone useful for everyone.
+            </h2>
+
+            <p>
+                A focused community helps students find useful
+                academic information without unnecessary noise.
+            </p>
+
+        </div>
+
+
+        <div class="rules-box">
+
+            <div class="rule reveal">
+                <div class="rule-icon">✓</div>
+                <span>Keep conversations within reasonable limits.</span>
+            </div>
+
+            <div class="rule reveal">
+                <div class="rule-icon">✓</div>
+                <span>Keep discussions related to studies and academic activities.</span>
+            </div>
+
+            <div class="rule reveal">
+                <div class="rule-icon">✓</div>
+                <span>Use stickers minimally.</span>
+            </div>
+
+            <div class="rule reveal">
+                <div class="rule-icon">✓</div>
+                <span>Avoid irrelevant posts, messages and shares.</span>
+            </div>
+
+            <div class="rule reveal">
+                <div class="rule-icon">✓</div>
+                <span>Do not share unrelated group or channel links.</span>
+            </div>
+
+            <div class="rule reveal">
+                <div class="rule-icon">✓</div>
+                <span>Need something? Tag the relevant support/admin team.</span>
+            </div>
+
+            <div class="rule reveal">
+                <div class="rule-icon">✓</div>
+                <span>Respect other students and keep communication professional.</span>
+            </div>
+
+            <div class="rule reveal">
+                <div class="rule-icon">✓</div>
+                <span>Share EduMate Zone with classmates who may benefit.</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="cta">
+
+    <div class="container">
+
+        <div class="cta-box reveal">
+
+            <h2>
+                Ready to stay connected?
+            </h2>
+
+            <p>
+                Join EduMate Zone and stay updated with academic
+                resources, opportunities, admissions, scholarships,
+                jobs and more.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="https://chat.whatsapp.com/DuQeDwmpBmv9L35IfSlMuW"
+                    target="_blank"
+                    class="btn btn-whatsapp">
+                    💬 Join WhatsApp
+                </a>
+
+                <a
+                    href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
+                    target="_blank"
+                    class="btn btn-outline">
+                    📢 Follow Channel
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+
+                <div class="brand">
+
+                    <div class="brand-logo">
+                        E
+                    </div>
+
+                    <div class="brand-text">
+                        EduMate <span>Zone</span>
+                    </div>
+
+                </div>
+
+                <p class="footer-description">
+                    Your Educational Partner — Learn, Share,
+                    Grow Together. A student-focused academic
+                    community for resources, updates and opportunities.
+                </p>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Explore</h4>
+
+                <a href="#resources">Resources</a>
+                <a href="#opportunities">Opportunities</a>
+                <a href="#community">Community</a>
+                <a href="#support">Support</a>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Resources</h4>
+
+                <a href="https://drive.google.com/drive/folders/1OE05gKi6f1RuoFa64ZPaisopQfl9jOp"
+                   target="_blank">
+                    Semester 1
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1oRp55KLYog-QigmHVGmTCOM9KQg6D7OD"
+                   target="_blank">
+                    Semester 2
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1cZ5poXTnVUYLmc95Q6pmyYeRD_ElJum"
+                   target="_blank">
+                    Semester 3
+                </a>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Community</h4>
+
+                <a
+                    href="https://chat.whatsapp.com/DuQeDwmpBmv9L35IfSlMuW"
+                    target="_blank">
+                    WhatsApp Group
+                </a>
+
+                <a
+                    href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
+                    target="_blank">
+                    WhatsApp Channel
+                </a>
+
+                <a href="#support">
+                    Admin Support
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © <span id="year"></span> EduMate Zone.
+            Learn • Share • Grow Together.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+    /* =========================================================
+       MOBILE MENU
+    ========================================================= */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+
+        menuBtn.textContent =
+            navLinks.classList.contains("show") ? "✕" : "☰";
+    });
+
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            navLinks.classList.remove("show");
+            menuBtn.textContent = "☰";
+
+        });
+
+    });
+
+
+    /* =========================================================
+       DARK MODE
+    ========================================================= */
+
+    const themeBtn = document.getElementById("themeBtn");
+
+    const savedTheme = localStorage.getItem("edumate-theme");
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add("dark");
+        themeBtn.textContent = "☀";
+
+    }
+
+    themeBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark");
+
+        const isDark =
+            document.body.classList.contains("dark");
+
+        themeBtn.textContent =
+            isDark ? "☀" : "☾";
+
+        localStorage.setItem(
+            "edumate-theme",
+            isDark ? "dark" : "light"
+        );
+
+    });
+
+
+    /* =========================================================
+       OPPORTUNITY FILTER
+    ========================================================= */
+
+    const filterButtons =
+        document.querySelectorAll(".filter-btn");
+
+    const opportunityCards =
+        document.querySelectorAll(".opportunity-card");
+
+    filterButtons.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            filterButtons.forEach(btn =>
+                btn.classList.remove("active")
+            );
+
+            button.classList.add("active");
+
+            const filter =
+                button.dataset.filter;
+
+            opportunityCards.forEach(card => {
+
+                const category =
+                    card.dataset.category;
+
+                if (
+                    filter === "all" ||
+                    category === filter
+                ) {
+
+                    card.style.display = "block";
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        });
+
+    });
+
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+
+    const revealElements =
+        document.querySelectorAll(".reveal");
+
+    const revealObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: .12
+            }
+        );
+
+    revealElements.forEach(element => {
+
+        revealObserver.observe(element);
+
+    });
+
+
+    /* =========================================================
+       CURRENT YEAR
+    ========================================================= */
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+
+    /* =========================================================
+       GOVERNMENT UPDATE NOTICE
+    ========================================================= */
+
+    function showNotice(event) {
+
+        event.preventDefault();
+
+        alert(
+            "EduMate Zone Government Update:\n\n" +
+            "A post shared by the platform reported a plan to " +
+            "convert 300 Rural Health Centres in Punjab into " +
+            "fully functioning hospitals.\n\n" +
+            "For the latest verified details, please check " +
+            "official government sources."
+        );
+
+    }
+
+
+    /* =========================================================
+       SMOOTH CARD INTERACTION
+    ========================================================= */
+
+    document.querySelectorAll(".feature-card, .semester-card, .support-card")
+        .forEach(card => {
+
+            card.addEventListener("mousemove", event => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+                const x =
+                    event.clientX - rect.left;
+
+                const y =
+                    event.clientY - rect.top;
+
+                const rotateX =
+                    ((y / rect.height) - .5) * -2;
+
+                const rotateY =
+                    ((x / rect.width) - .5) * 2;
+
+                card.style.transform =
+                    `translateY(-5px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+            });
+
+            card.addEventListener("mouseleave", () => {
+
+                card.style.transform = "";
+
+            });
+
+        });
+
+</script>
+
+</body>
+</html>
