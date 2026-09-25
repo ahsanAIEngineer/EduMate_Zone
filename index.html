@@ -1,1283 +1,1438 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>EduMate Zone | Learn • Share • Grow Together</title>
-
-    <meta name="description"
-          content="EduMate Zone — Your Educational Partner. Academic updates, study resources, scholarships, admissions, internships, jobs and career opportunities for students.">
-
-    <meta name="theme-color" content="#6c63ff">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
-          rel="stylesheet">
-
-    <style>
-        /* =========================================================
-           RESET
-        ========================================================= */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "Inter", sans-serif;
-            background: #f7f8fc;
-            color: #15162b;
-            line-height: 1.6;
-            overflow-x: hidden;
-            transition: background .3s ease, color .3s ease;
-        }
-
-        body.dark {
-            background: #0b0d18;
-            color: #f4f5ff;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button,
-        input {
-            font-family: inherit;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        .container {
-            width: min(1180px, 92%);
-            margin: auto;
-        }
-
-        /* =========================================================
-           VARIABLES
-        ========================================================= */
-
-        :root {
-            --primary: #6c63ff;
-            --primary-dark: #554ce8;
-            --secondary: #8b5cf6;
-            --cyan: #06b6d4;
-            --green: #25d366;
-            --text: #15162b;
-            --muted: #686b82;
-            --white: #ffffff;
-            --bg: #f7f8fc;
-            --card: #ffffff;
-            --border: rgba(20, 22, 50, .08);
-            --shadow: 0 18px 50px rgba(50, 42, 120, .08);
-        }
-
-        body.dark {
-            --text: #f4f5ff;
-            --muted: #a9adc2;
-            --bg: #0b0d18;
-            --card: #121526;
-            --border: rgba(255,255,255,.08);
-            --shadow: 0 20px 60px rgba(0,0,0,.3);
-        }
-
-        /* =========================================================
-           HEADER
-        ========================================================= */
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            background: rgba(247,248,252,.78);
-            border-bottom: 1px solid var(--border);
-        }
-
-        body.dark header {
-            background: rgba(11,13,24,.78);
-        }
-
-        .nav {
-            height: 76px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .brand-logo {
-            width: 45px;
-            height: 45px;
-            border-radius: 14px;
-            display: grid;
-            place-items: center;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            font-size: 22px;
-            font-weight: 800;
-            box-shadow: 0 10px 25px rgba(108,99,255,.3);
-        }
-
-        .brand-text {
-            font-family: "Plus Jakarta Sans", sans-serif;
-            font-weight: 800;
-            font-size: 19px;
-            letter-spacing: -.5px;
-        }
-
-        .brand-text span {
-            color: var(--primary);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 27px;
-        }
-
-        .nav-links a {
-            font-size: 14px;
-            color: var(--muted);
-            font-weight: 600;
-            transition: .25s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 9px;
-        }
-
-        .icon-btn {
-            width: 42px;
-            height: 42px;
-            border: 1px solid var(--border);
-            background: var(--card);
-            color: var(--text);
-            border-radius: 13px;
-            cursor: pointer;
-            font-size: 17px;
-            transition: .25s ease;
-        }
-
-        .icon-btn:hover {
-            transform: translateY(-2px);
-            border-color: var(--primary);
-        }
-
-        .menu-btn {
-            display: none;
-        }
-
-        /* =========================================================
-           HERO
-        ========================================================= */
-
-        .hero {
-            min-height: 760px;
-            padding-top: 145px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 550px;
-            height: 550px;
-            background: rgba(108,99,255,.14);
-            border-radius: 50%;
-            filter: blur(80px);
-            top: 40px;
-            left: -220px;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: rgba(6,182,212,.10);
-            border-radius: 50%;
-            filter: blur(90px);
-            right: -200px;
-            top: 160px;
-        }
-
-        .hero-grid {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 1.08fr .92fr;
-            align-items: center;
-            gap: 70px;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(108,99,255,.09);
-            border: 1px solid rgba(108,99,255,.15);
-            color: var(--primary);
-            padding: 8px 13px;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 23px;
-        }
-
-        .hero h1 {
-            font-family: "Plus Jakarta Sans", sans-serif;
-            font-size: clamp(42px, 6vw, 72px);
-            line-height: 1.04;
-            letter-spacing: -3px;
-            max-width: 700px;
-        }
-
-        .gradient-text {
-            background: linear-gradient(90deg, #6c63ff, #8b5cf6, #06b6d4);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero-description {
-            color: var(--muted);
-            max-width: 620px;
-            font-size: 17px;
-            margin: 25px 0 30px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
-            border: none;
-            cursor: pointer;
-            padding: 14px 20px;
-            border-radius: 14px;
-            font-size: 14px;
-            font-weight: 700;
-            transition: .25s ease;
-        }
-
-        .btn-primary {
-            color: white;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            box-shadow: 0 13px 30px rgba(108,99,255,.25);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 18px 35px rgba(108,99,255,.32);
-        }
-
-        .btn-outline {
-            background: var(--card);
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-
-        .btn-outline:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary);
-        }
-
-        .btn-whatsapp {
-            color: white;
-            background: var(--green);
-        }
-
-        .btn-whatsapp:hover {
-            transform: translateY(-3px);
-        }
-
-        /* Hero visual */
-
-        .hero-visual {
-            position: relative;
-            min-height: 450px;
-        }
-
-        .dashboard {
-            position: absolute;
-            width: 100%;
-            max-width: 490px;
-            right: 0;
-            top: 20px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            box-shadow: var(--shadow);
-            padding: 18px;
-            transform: rotate(2deg);
-            animation: float 5s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%,100% { transform: translateY(0) rotate(2deg); }
-            50% { transform: translateY(-12px) rotate(1deg); }
-        }
-
-        .dash-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 5px 18px;
-        }
-
-        .dash-title {
-            font-weight: 800;
-            font-size: 17px;
-        }
-
-        .online {
-            font-size: 11px;
-            padding: 6px 9px;
-            background: rgba(37,211,102,.1);
-            color: #16a34a;
-            border-radius: 100px;
-            font-weight: 700;
-        }
-
-        .hero-card {
-            padding: 22px;
-            border-radius: 21px;
-            background: linear-gradient(135deg, #6c63ff, #8b5cf6);
-            color: white;
-            margin-bottom: 13px;
-        }
-
-        .hero-card small {
-            opacity: .8;
-        }
-
-        .hero-card h3 {
-            margin-top: 8px;
-            font-size: 25px;
-        }
-
-        .mini-grid {
-            display: grid;
-            grid-template-columns: repeat(2,1fr);
-            gap: 12px;
-        }
-
-        .mini-card {
-            padding: 18px;
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            background: var(--bg);
-        }
-
-        .mini-icon {
-            font-size: 22px;
-            margin-bottom: 8px;
-        }
-
-        .mini-card strong {
-            display: block;
-            font-size: 14px;
-        }
-
-        .mini-card span {
-            font-size: 11px;
-            color: var(--muted);
-        }
-
-        .floating-stat {
-            position: absolute;
-            left: -30px;
-            bottom: 40px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-            border-radius: 18px;
-            padding: 16px 19px;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .stat-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 13px;
-            display: grid;
-            place-items: center;
-            background: rgba(6,182,212,.1);
-            color: var(--cyan);
-        }
-
-        .floating-stat strong {
-            display: block;
-            font-size: 16px;
-        }
-
-        .floating-stat span {
-            color: var(--muted);
-            font-size: 11px;
-        }
-
-        /* =========================================================
-           GENERAL SECTIONS
-        ========================================================= */
-
-        section {
-            padding: 100px 0;
-        }
-
-        .section-heading {
-            text-align: center;
-            max-width: 720px;
-            margin: 0 auto 48px;
-        }
-
-        .section-tag {
-            color: var(--primary);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1.7px;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .section-heading h2 {
-            font-family: "Plus Jakarta Sans", sans-serif;
-            font-size: clamp(30px, 4vw, 45px);
-            line-height: 1.12;
-            letter-spacing: -1.7px;
-        }
-
-        .section-heading p {
-            color: var(--muted);
-            margin-top: 13px;
-        }
-
-        /* =========================================================
-           FEATURE CARDS
-        ========================================================= */
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(4,1fr);
-            gap: 16px;
-        }
-
-        .feature-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 22px;
-            padding: 25px;
-            box-shadow: var(--shadow);
-            transition: .3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-7px);
-            border-color: rgba(108,99,255,.25);
-        }
-
-        .feature-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 16px;
-            display: grid;
-            place-items: center;
-            font-size: 23px;
-            background: rgba(108,99,255,.1);
-            margin-bottom: 17px;
-        }
-
-        .feature-card h3 {
-            font-size: 16px;
-            margin-bottom: 7px;
-        }
-
-        .feature-card p {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        /* =========================================================
-           SEMESTERS
-        ========================================================= */
-
-        .semester-section {
-            background: var(--card);
-        }
-
-        .semester-grid {
-            display: grid;
-            grid-template-columns: repeat(4,1fr);
-            gap: 18px;
-        }
-
-        .semester-card {
-            position: relative;
-            overflow: hidden;
-            padding: 27px;
-            border-radius: 23px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            transition: .3s ease;
-        }
-
-        .semester-card:hover {
-            transform: translateY(-7px);
-            box-shadow: var(--shadow);
-        }
-
-        .semester-number {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .semester-card h3 {
-            margin: 9px 0 6px;
-            font-size: 23px;
-        }
-
-        .semester-card p {
-            color: var(--muted);
-            font-size: 13px;
-            margin-bottom: 19px;
-        }
-
-        .semester-card .btn {
-            width: 100%;
-        }
-
-        .coming {
-            opacity: .7;
-        }
-
-        .coming .btn {
-            cursor: not-allowed;
-        }
-
-        /* =========================================================
-           COMMUNITY
-        ========================================================= */
-
-        .community {
-            background: linear-gradient(135deg, #11142a, #1c1740);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .community::before {
-            content: "";
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: rgba(108,99,255,.28);
-            filter: blur(90px);
-            right: -100px;
-            top: -180px;
-        }
-
-        .community-grid {
-            position: relative;
-            z-index: 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 70px;
-            align-items: center;
-        }
-
-        .community .section-tag {
-            color: #a9a3ff;
-        }
-
-        .community h2 {
-            font-family: "Plus Jakarta Sans", sans-serif;
-            font-size: clamp(30px,4vw,48px);
-            line-height: 1.1;
-            letter-spacing: -1.5px;
-        }
-
-        .community p {
-            color: #b6b9ca;
-            margin: 17px 0 26px;
-        }
-
-        .community-box {
-            background: rgba(255,255,255,.06);
-            border: 1px solid rgba(255,255,255,.1);
-            border-radius: 25px;
-            padding: 25px;
-            backdrop-filter: blur(10px);
-        }
-
-        .community-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(255,255,255,.08);
-        }
-
-        .community-item:last-child {
-            border-bottom: 0;
-        }
-
-        .community-left {
-            display: flex;
-            gap: 13px;
-            align-items: center;
-        }
-
-        .community-left .icon {
-            width: 43px;
-            height: 43px;
-            display: grid;
-            place-items: center;
-            border-radius: 13px;
-            background: rgba(255,255,255,.08);
-        }
-
-        .community-left strong {
-            display: block;
-            font-size: 14px;
-        }
-
-        .community-left span {
-            display: block;
-            font-size: 11px;
-            color: #999caf;
-        }
-
-        .small-btn {
-            padding: 9px 13px;
-            border-radius: 10px;
-            font-size: 11px;
-            font-weight: 700;
-            background: rgba(255,255,255,.1);
-            transition: .2s;
-        }
-
-        .small-btn:hover {
-            background: rgba(255,255,255,.18);
-        }
-
-        /* =========================================================
-           OPPORTUNITIES
-        ========================================================= */
-
-        .filter-row {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 28px;
-        }
-
-        .filter-btn {
-            border: 1px solid var(--border);
-            background: var(--card);
-            color: var(--muted);
-            border-radius: 100px;
-            padding: 9px 16px;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 700;
-            transition: .2s;
-        }
-
-        .filter-btn.active,
-        .filter-btn:hover {
-            color: white;
-            background: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .opportunity-grid {
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            gap: 18px;
-        }
-
-        .opportunity-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 23px;
-            padding: 24px;
-            box-shadow: var(--shadow);
-            transition: .3s ease;
-        }
-
-        .opportunity-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .opp-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 17px;
-        }
-
-        .opp-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            display: grid;
-            place-items: center;
-            font-size: 22px;
-            background: rgba(108,99,255,.1);
-        }
-
-        .opp-type {
-            font-size: 10px;
-            font-weight: 800;
-            color: var(--primary);
-            padding: 6px 9px;
-            border-radius: 100px;
-            background: rgba(108,99,255,.09);
-        }
-
-        .opportunity-card h3 {
-            font-size: 17px;
-            line-height: 1.3;
-            margin-bottom: 8px;
-        }
-
-        .opportunity-card p {
-            font-size: 12px;
-            color: var(--muted);
-            margin-bottom: 15px;
-        }
-
-        .opp-meta {
-            display: flex;
-            gap: 9px;
-            flex-wrap: wrap;
-            margin-bottom: 18px;
-        }
-
-        .opp-meta span {
-            font-size: 10px;
-            color: var(--muted);
-            padding: 6px 9px;
-            border-radius: 8px;
-            background: var(--bg);
-        }
-
-        .opportunity-card .btn {
-            width: 100%;
-        }
-
-        /* =========================================================
-           BS COMMUNITY
-        ========================================================= */
-
-        .bs-section {
-            background: var(--card);
-        }
-
-        .bs-grid {
-            display: grid;
-            grid-template-columns: repeat(4,1fr);
-            gap: 14px;
-        }
-
-        .bs-item {
-            border: 1px solid var(--border);
-            background: var(--bg);
-            border-radius: 17px;
-            padding: 18px;
-            font-size: 13px;
-            font-weight: 700;
-            transition: .25s;
-        }
-
-        .bs-item:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary);
-        }
-
-        /* =========================================================
-           ADMIN SUPPORT
-        ========================================================= */
-
-        .support-grid {
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            gap: 18px;
-        }
-
-        .support-card {
-            padding: 26px;
-            border: 1px solid var(--border);
-            border-radius: 22px;
-            background: var(--card);
-            box-shadow: var(--shadow);
-        }
-
-        .support-icon {
-            font-size: 26px;
-            margin-bottom: 15px;
-        }
-
-        .support-card h3 {
-            font-size: 17px;
-            margin-bottom: 7px;
-        }
-
-        .support-card p {
-            color: var(--muted);
-            font-size: 12px;
-            margin-bottom: 16px;
-        }
-
-        /* =========================================================
-           RULES
-        ========================================================= */
-
-        .rules-box {
-            max-width: 900px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(2,1fr);
-            gap: 12px;
-        }
-
-        .rule {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 16px;
-            border: 1px solid var(--border);
-            background: var(--card);
-            border-radius: 15px;
-        }
-
-        .rule-icon {
-            color: var(--primary);
-            font-weight: 800;
-        }
-
-        .rule span {
-            font-size: 13px;
-            color: var(--muted);
-        }
-
-        /* =========================================================
-           CTA
-        ========================================================= */
-
-        .cta {
-            padding: 85px 0;
-        }
-
-        .cta-box {
-            border-radius: 30px;
-            padding: 60px 30px;
-            text-align: center;
-            color: white;
-            background: linear-gradient(135deg,#6c63ff,#8b5cf6,#06b6d4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-box::after {
-            content: "";
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            border: 50px solid rgba(255,255,255,.07);
-            right: -100px;
-            top: -130px;
-        }
-
-        .cta-box h2 {
-            position: relative;
-            z-index: 2;
-            font-family: "Plus Jakarta Sans", sans-serif;
-            font-size: clamp(30px,4vw,48px);
-            letter-spacing: -1.5px;
-        }
-
-        .cta-box p {
-            position: relative;
-            z-index: 2;
-            max-width: 620px;
-            margin: 13px auto 25px;
-            color: rgba(255,255,255,.85);
-        }
-
-        .cta-box .hero-buttons {
-            position: relative;
-            z-index: 3;
-            justify-content: center;
-        }
-
-        .cta-box .btn-outline {
-            background: rgba(255,255,255,.12);
-            color: white;
-            border-color: rgba(255,255,255,.25);
-        }
-
-        /* =========================================================
-           FOOTER
-        ========================================================= */
-
-        footer {
-            padding: 55px 0 25px;
-            background: #0b0d18;
-            color: white;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 40px;
-            padding-bottom: 45px;
-        }
-
-        footer .brand-text {
-            color: white;
-        }
-
-        .footer-description {
-            color: #969aad;
-            font-size: 12px;
-            max-width: 320px;
-            margin-top: 15px;
-        }
-
-        .footer-col h4 {
-            font-size: 13px;
-            margin-bottom: 15px;
-        }
-
-        .footer-col a {
-            display: block;
-            color: #9296a9;
-            font-size: 12px;
-            margin-bottom: 9px;
-            transition: .2s;
-        }
-
-        .footer-col a:hover {
-            color: white;
-        }
-
-        .copyright {
-            border-top: 1px solid rgba(255,255,255,.08);
-            padding-top: 22px;
-            color: #777b90;
-            font-size: 11px;
-            text-align: center;
-        }
-
-        /* =========================================================
-           SCROLL REVEAL
-        ========================================================= */
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(25px);
-            transition: opacity .7s ease, transform .7s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* =========================================================
-           RESPONSIVE
-        ========================================================= */
-
-        @media (max-width: 1000px) {
-
-            .nav-links {
-                gap: 15px;
-            }
-
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-description {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-visual {
-                min-height: 500px;
-                max-width: 600px;
-                width: 100%;
-                margin: auto;
-            }
-
-            .dashboard {
-                left: 50%;
-                transform: translateX(-50%) rotate(2deg);
-            }
-
-            .features,
-            .semester-grid {
-                grid-template-columns: repeat(2,1fr);
-            }
-
-            .opportunity-grid {
-                grid-template-columns: repeat(2,1fr);
-            }
-
-            .bs-grid {
-                grid-template-columns: repeat(3,1fr);
-            }
-
-            .community-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: repeat(2,1fr);
-            }
-        }
-
-        @media (max-width: 700px) {
-
-            .nav {
-                height: 68px;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 68px;
-                left: 4%;
-                right: 4%;
-                padding: 20px;
-                background: var(--card);
-                border: 1px solid var(--border);
-                border-radius: 18px;
-                box-shadow: var(--shadow);
-                display: none;
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .nav-links.show {
-                display: flex;
-            }
-
-            .nav-links a {
-                padding: 10px;
-            }
-
-            .menu-btn {
-                display: inline-grid;
-                place-items: center;
-            }
-
-            .hero {
-                padding-top: 115px;
-                min-height: auto;
-                padding-bottom: 70px;
-            }
-
-            .hero h1 {
-                letter-spacing: -2px;
-            }
-
-            .hero-visual {
-                min-height: 430px;
-            }
-
-            .dashboard {
-                max-width: 94%;
-            }
-
-            .floating-stat {
-                left: 0;
-                bottom: 15px;
-            }
-
-            section {
-                padding: 75px 0;
-            }
-
-            .features,
-            .semester-grid,
-            .opportunity-grid,
-            .support-grid,
-            .rules-box {
-                grid-template-columns: 1fr;
-            }
-
-            .bs-grid {
-                grid-template-columns: repeat(2,1fr);
-            }
-
-            .community-grid {
-                gap: 35px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 30px;
-            }
-        }
-
-        @media (max-width: 450px) {
-
-            .brand-text {
-                font-size: 16px;
-            }
-
-            .brand-logo {
-                width: 40px;
-                height: 40px;
-            }
-
-            .nav-actions .icon-btn:first-child {
-                display: none;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-            }
-
-            .mini-grid {
-                gap: 8px;
-            }
-
-            .mini-card {
-                padding: 14px;
-            }
-
-            .bs-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduMate Zone — Learn • Share • Grow</title>
+
+<meta name="description"
+content="EduMate Zone — Academic updates, study resources, scholarships, admissions, internships, jobs and career opportunities for students.">
+
+<style>
+/* =========================================================
+   RESET
+========================================================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+    background:#f4f7fb;
+    color:#172033;
+    line-height:1.6;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+:root{
+    --primary:#0f766e;
+    --primary-dark:#115e59;
+    --primary-light:#ccfbf1;
+
+    --secondary:#2563eb;
+    --accent:#f59e0b;
+
+    --dark:#111827;
+    --text:#172033;
+    --muted:#64748b;
+
+    --white:#ffffff;
+    --bg:#f4f7fb;
+    --border:#e2e8f0;
+
+    --shadow:0 15px 45px rgba(15,23,42,.08);
+    --shadow-hover:0 22px 60px rgba(15,23,42,.13);
+
+    --radius:22px;
+}
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+body.dark{
+    --text:#e5e7eb;
+    --muted:#94a3b8;
+    --dark:#f8fafc;
+    --bg:#0b1120;
+    --white:#111827;
+    --border:#243047;
+
+    background:#0b1120;
+    color:#e5e7eb;
+}
+
+body.dark .navbar,
+body.dark .card,
+body.dark .resource-card,
+body.dark .support-card,
+body.dark .opportunity-card,
+body.dark .program,
+body.dark .rule,
+body.dark .search-box,
+body.dark .community-panel{
+    background:#111827;
+    border-color:#243047;
+}
+
+body.dark .nav-links a{
+    color:#cbd5e1;
+}
+
+body.dark .nav-links a:hover{
+    color:#5eead4;
+}
+
+body.dark .hero{
+    background:
+        radial-gradient(circle at 10% 20%,rgba(20,184,166,.13),transparent 30%),
+        radial-gradient(circle at 90% 30%,rgba(37,99,235,.13),transparent 30%),
+        #0b1120;
+}
+
+body.dark .section-label{
+    color:#5eead4;
+}
+
+body.dark .program:hover{
+    background:#162033;
+}
+
+body.dark footer{
+    background:#050914;
+}
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+.section{
+    padding:100px 0;
+}
+
+.section-head{
+    max-width:700px;
+    margin-bottom:45px;
+}
+
+.section-label{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--primary);
+    font-size:.82rem;
+    font-weight:800;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
+
+.section-label::before{
+    content:"";
+    width:30px;
+    height:3px;
+    border-radius:20px;
+    background:currentColor;
+}
+
+.section-title{
+    font-size:clamp(2rem,4vw,3.3rem);
+    line-height:1.08;
+    letter-spacing:-1.5px;
+    margin-bottom:15px;
+}
+
+.section-description{
+    color:var(--muted);
+    font-size:1.02rem;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+.navbar{
+    position:fixed;
+    top:18px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(1120px,92%);
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:13px 15px 13px 20px;
+
+    background:rgba(255,255,255,.88);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(226,232,240,.8);
+    border-radius:18px;
+
+    box-shadow:0 12px 35px rgba(15,23,42,.08);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    font-weight:900;
+    font-size:1.1rem;
+}
+
+.logo-icon{
+    width:40px;
+    height:40px;
+    display:grid;
+    place-items:center;
+    border-radius:12px;
+    color:#fff;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    box-shadow:0 8px 20px rgba(15,118,110,.22);
+}
+
+.logo-text span{
+    color:var(--primary);
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.nav-links a{
+    color:#475569;
+    font-size:.9rem;
+    font-weight:700;
+    padding:9px 12px;
+    border-radius:10px;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:var(--primary);
+    background:var(--primary-light);
+}
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.icon-btn{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:11px;
+    background:#f1f5f9;
+    color:#334155;
+    display:grid;
+    place-items:center;
+    font-size:1rem;
+    transition:.25s;
+}
+
+.icon-btn:hover{
+    background:var(--primary-light);
+    color:var(--primary);
+}
+
+.menu-btn{
+    display:none;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+.hero{
+    min-height:760px;
+    padding:170px 0 90px;
+
+    background:
+        radial-gradient(circle at 5% 15%,rgba(20,184,166,.12),transparent 28%),
+        radial-gradient(circle at 92% 25%,rgba(37,99,235,.12),transparent 28%),
+        #f8fafc;
+
+    position:relative;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:65px;
+    align-items:center;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    background:#ecfdf5;
+    color:#047857;
+    padding:8px 13px;
+    border-radius:999px;
+    font-size:.78rem;
+    font-weight:800;
+    margin-bottom:22px;
+    border:1px solid #a7f3d0;
+}
+
+.badge-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#10b981;
+    box-shadow:0 0 0 5px rgba(16,185,129,.12);
+}
+
+.hero h1{
+    font-size:clamp(3rem,6vw,5.7rem);
+    line-height:.95;
+    letter-spacing:-4px;
+    max-width:750px;
+    margin-bottom:27px;
+}
+
+.hero h1 span{
+    color:var(--primary);
+}
+
+.hero-text{
+    max-width:650px;
+    color:var(--muted);
+    font-size:1.08rem;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:none;
+    padding:13px 19px;
+    border-radius:12px;
+    font-weight:800;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    transition:.25s;
+}
+
+.btn-primary{
+    background:var(--primary);
+    color:#fff;
+    box-shadow:0 10px 25px rgba(15,118,110,.22);
+}
+
+.btn-primary:hover{
+    background:var(--primary-dark);
+    transform:translateY(-2px);
+}
+
+.btn-outline{
+    background:transparent;
+    border:1px solid var(--border);
+    color:var(--text);
+}
+
+.btn-outline:hover{
+    border-color:var(--primary);
+    color:var(--primary);
+}
+
+.hero-note{
+    margin-top:25px;
+    color:var(--muted);
+    font-size:.86rem;
+}
+
+/* HERO VISUAL */
+.dashboard{
+    position:relative;
+}
+
+.dashboard-main{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:28px;
+    padding:22px;
+    box-shadow:var(--shadow);
+    transform:rotate(1.5deg);
+}
+
+.dashboard-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.dashboard-title{
+    font-weight:900;
+}
+
+.live{
+    font-size:.72rem;
+    color:#047857;
+    background:#ecfdf5;
+    padding:6px 9px;
+    border-radius:999px;
+    font-weight:800;
+}
+
+.progress-box{
+    padding:20px;
+    border-radius:18px;
+    background:linear-gradient(135deg,#ecfeff,#eff6ff);
+    margin-bottom:15px;
+}
+
+.progress-title{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:12px;
+    font-size:.86rem;
+    font-weight:800;
+}
+
+.progress{
+    height:8px;
+    background:#dbeafe;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress span{
+    display:block;
+    width:76%;
+    height:100%;
+    background:linear-gradient(90deg,var(--primary),var(--secondary));
+    border-radius:20px;
+}
+
+.mini-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.mini-card{
+    padding:18px;
+    border:1px solid var(--border);
+    border-radius:17px;
+    background:var(--white);
+}
+
+.mini-icon{
+    font-size:1.5rem;
+    margin-bottom:8px;
+}
+
+.mini-card strong{
+    display:block;
+    font-size:1.3rem;
+}
+
+.mini-card small{
+    color:var(--muted);
+}
+
+.float-card{
+    position:absolute;
+    background:var(--white);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    padding:13px 15px;
+    border-radius:15px;
+    font-size:.8rem;
+    font-weight:800;
+}
+
+.float-one{
+    top:-25px;
+    right:-25px;
+}
+
+.float-two{
+    bottom:-20px;
+    left:-25px;
+}
+
+.float-card span{
+    display:block;
+    color:var(--primary);
+    font-size:1.1rem;
+}
+
+/* =========================================================
+   FEATURE STRIP
+========================================================= */
+.feature-strip{
+    margin-top:-55px;
+    position:relative;
+    z-index:5;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+}
+
+.feature-item{
+    padding:25px;
+    border-right:1px solid var(--border);
+    transition:.25s;
+}
+
+.feature-item:last-child{
+    border-right:none;
+}
+
+.feature-item:hover{
+    background:#f8fafc;
+}
+
+.feature-icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:var(--primary-light);
+    margin-bottom:14px;
+    font-size:1.2rem;
+}
+
+.feature-item h3{
+    font-size:.95rem;
+    margin-bottom:4px;
+}
+
+.feature-item p{
+    color:var(--muted);
+    font-size:.8rem;
+}
+
+/* =========================================================
+   RESOURCES
+========================================================= */
+.resource-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:17px;
+}
+
+.resource-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:24px;
+    transition:.3s;
+}
+
+.resource-card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow-hover);
+}
+
+.resource-number{
+    color:#94a3b8;
+    font-size:.75rem;
+    font-weight:900;
+    margin-bottom:25px;
+}
+
+.resource-icon{
+    width:50px;
+    height:50px;
+    display:grid;
+    place-items:center;
+    border-radius:15px;
+    background:#eff6ff;
+    margin-bottom:18px;
+    font-size:1.4rem;
+}
+
+.resource-card h3{
+    margin-bottom:7px;
+}
+
+.resource-card p{
+    color:var(--muted);
+    font-size:.84rem;
+    margin-bottom:18px;
+}
+
+.resource-link{
+    color:var(--primary);
+    font-size:.83rem;
+    font-weight:900;
+}
+
+/* =========================================================
+   SEMESTERS
+========================================================= */
+.semester-section{
+    background:#0f172a;
+    color:#fff;
+}
+
+.semester-section .section-description{
+    color:#94a3b8;
+}
+
+.semester-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.semester-card{
+    position:relative;
+    padding:28px;
+    min-height:230px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:22px;
+    background:rgba(255,255,255,.045);
+    overflow:hidden;
+    transition:.3s;
+}
+
+.semester-card::after{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    right:-45px;
+    bottom:-55px;
+    border-radius:50%;
+    background:rgba(20,184,166,.15);
+}
+
+.semester-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(94,234,212,.35);
+}
+
+.semester-no{
+    font-size:.75rem;
+    color:#5eead4;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.semester-card h3{
+    font-size:1.5rem;
+    margin:8px 0;
+}
+
+.semester-card p{
+    color:#94a3b8;
+    font-size:.85rem;
+    margin-bottom:22px;
+}
+
+.semester-btn{
+    color:#5eead4;
+    font-size:.82rem;
+    font-weight:900;
+}
+
+.coming{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:7px;
+    background:rgba(245,158,11,.1);
+    color:#fbbf24;
+    font-size:.7rem;
+    font-weight:800;
+}
+
+/* =========================================================
+   COMMUNITY
+========================================================= */
+.community-wrap{
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    gap:25px;
+}
+
+.community-panel{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:25px;
+    padding:30px;
+}
+
+.community-big{
+    min-height:100%;
+    background:
+        linear-gradient(135deg,rgba(15,118,110,.95),rgba(37,99,235,.95));
+    color:#fff;
+    border:none;
+}
+
+.community-big p{
+    color:rgba(255,255,255,.78);
+}
+
+.community-big .btn{
+    background:#fff;
+    color:#0f766e;
+    margin-top:20px;
+}
+
+.community-list{
+    display:grid;
+    gap:12px;
+}
+
+.community-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:15px;
+    border:1px solid var(--border);
+    border-radius:15px;
+}
+
+.community-row-icon{
+    width:42px;
+    height:42px;
+    display:grid;
+    place-items:center;
+    border-radius:12px;
+    background:var(--primary-light);
+    font-size:1.2rem;
+}
+
+.community-row strong{
+    display:block;
+    font-size:.9rem;
+}
+
+.community-row span{
+    color:var(--muted);
+    font-size:.77rem;
+}
+
+/* =========================================================
+   OPPORTUNITIES
+========================================================= */
+.opportunity-toolbar{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    align-items:center;
+    margin-bottom:25px;
+    flex-wrap:wrap;
+}
+
+.search-box{
+    flex:1;
+    min-width:250px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:13px;
+    padding:0 14px;
+}
+
+.search-box input{
+    width:100%;
+    padding:13px 0;
+    border:none;
+    outline:none;
+    background:transparent;
+    color:var(--text);
+}
+
+.filters{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+}
+
+.filter{
+    border:1px solid var(--border);
+    background:var(--white);
+    color:var(--muted);
+    padding:9px 13px;
+    border-radius:10px;
+    font-size:.78rem;
+    font-weight:800;
+}
+
+.filter.active,
+.filter:hover{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+}
+
+.opportunity-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+.opportunity-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:23px;
+    transition:.3s;
+}
+
+.opportunity-card:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow);
+}
+
+.opp-top{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:18px;
+}
+
+.opp-icon{
+    width:45px;
+    height:45px;
+    border-radius:13px;
+    display:grid;
+    place-items:center;
+    background:#eff6ff;
+    font-size:1.25rem;
+}
+
+.opp-tag{
+    height:max-content;
+    background:#ecfdf5;
+    color:#047857;
+    padding:5px 9px;
+    border-radius:8px;
+    font-size:.68rem;
+    font-weight:900;
+}
+
+.opportunity-card h3{
+    font-size:1.03rem;
+    margin-bottom:5px;
+}
+
+.opp-meta{
+    color:var(--muted);
+    font-size:.78rem;
+    margin-bottom:15px;
+}
+
+.opp-description{
+    color:var(--muted);
+    font-size:.82rem;
+    margin-bottom:17px;
+}
+
+.opp-link{
+    color:var(--primary);
+    font-weight:900;
+    font-size:.8rem;
+}
+
+.no-results{
+    display:none;
+    padding:40px;
+    text-align:center;
+    color:var(--muted);
+    background:var(--white);
+    border:1px dashed var(--border);
+    border-radius:18px;
+}
+
+/* =========================================================
+   PROGRAMS
+========================================================= */
+.program-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.program{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:17px;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    transition:.25s;
+}
+
+.program:hover{
+    border-color:var(--primary);
+    transform:translateY(-3px);
+}
+
+.program-icon{
+    width:34px;
+    height:34px;
+    border-radius:9px;
+    display:grid;
+    place-items:center;
+    background:#f0fdfa;
+    color:var(--primary);
+}
+
+.program span{
+    font-weight:800;
+    font-size:.83rem;
+}
+
+/* =========================================================
+   SUPPORT
+========================================================= */
+.support-section{
+    background:#eef7f6;
+}
+
+body.dark .support-section{
+    background:#0d1725;
+}
+
+.support-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.support-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:21px;
+    padding:27px;
+}
+
+.support-avatar{
+    width:55px;
+    height:55px;
+    border-radius:16px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    color:#fff;
+    font-weight:900;
+    font-size:1.1rem;
+    margin-bottom:17px;
+}
+
+.support-card h3{
+    margin-bottom:5px;
+}
+
+.support-role{
+    color:var(--primary);
+    font-size:.78rem;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.support-card p{
+    color:var(--muted);
+    font-size:.82rem;
+    margin-bottom:18px;
+}
+
+.support-contact{
+    display:inline-flex;
+    padding:9px 12px;
+    background:var(--primary-light);
+    color:var(--primary);
+    border-radius:9px;
+    font-size:.78rem;
+    font-weight:900;
+}
+
+/* =========================================================
+   RULES
+========================================================= */
+.rules-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.rule{
+    display:flex;
+    gap:13px;
+    padding:18px;
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:15px;
+}
+
+.rule-number{
+    flex:none;
+    width:31px;
+    height:31px;
+    display:grid;
+    place-items:center;
+    border-radius:9px;
+    background:var(--primary);
+    color:#fff;
+    font-size:.75rem;
+    font-weight:900;
+}
+
+.rule p{
+    font-size:.85rem;
+    color:var(--muted);
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+.cta{
+    padding:80px 0;
+}
+
+.cta-box{
+    position:relative;
+    overflow:hidden;
+    border-radius:30px;
+    padding:65px;
+    background:
+        radial-gradient(circle at 90% 20%,rgba(94,234,212,.2),transparent 30%),
+        linear-gradient(135deg,#0f172a,#0f766e);
+    color:#fff;
+}
+
+.cta-box h2{
+    font-size:clamp(2rem,4vw,3.5rem);
+    line-height:1.05;
+    max-width:700px;
+    margin-bottom:15px;
+}
+
+.cta-box p{
+    max-width:650px;
+    color:#cbd5e1;
+    margin-bottom:25px;
+}
+
+.cta-box .btn{
+    background:#fff;
+    color:#0f766e;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+footer{
+    background:#0b1120;
+    color:#fff;
+    padding:65px 0 25px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:45px;
+}
+
+.footer-brand p{
+    color:#94a3b8;
+    font-size:.83rem;
+    max-width:340px;
+    margin-top:15px;
+}
+
+.footer-title{
+    font-size:.83rem;
+    margin-bottom:15px;
+}
+
+.footer-links{
+    display:grid;
+    gap:9px;
+}
+
+.footer-links a{
+    color:#94a3b8;
+    font-size:.78rem;
+}
+
+.footer-links a:hover{
+    color:#5eead4;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.08);
+    padding-top:22px;
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    color:#64748b;
+    font-size:.75rem;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(2,6,23,.7);
+    backdrop-filter:blur(7px);
+    z-index:2000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    max-width:500px;
+    width:100%;
+    background:var(--white);
+    color:var(--text);
+    border-radius:23px;
+    padding:30px;
+    position:relative;
+    box-shadow:0 30px 90px rgba(0,0,0,.25);
+}
+
+.modal-close{
+    position:absolute;
+    right:18px;
+    top:18px;
+    width:35px;
+    height:35px;
+    border:none;
+    border-radius:9px;
+    background:#f1f5f9;
+}
+
+.modal-box h2{
+    margin-bottom:10px;
+}
+
+.modal-box p{
+    color:var(--muted);
+    font-size:.9rem;
+    margin-bottom:20px;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+.toast{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    z-index:3000;
+    background:#111827;
+    color:#fff;
+    padding:14px 17px;
+    border-radius:13px;
+    box-shadow:0 15px 40px rgba(0,0,0,.2);
+    transform:translateY(100px);
+    opacity:0;
+    pointer-events:none;
+    transition:.35s;
+    font-size:.82rem;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+/* =========================================================
+   REVEAL
+========================================================= */
+.reveal{
+    opacity:0;
+    transform:translateY(25px);
+    transition:opacity .7s ease,transform .7s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media(max-width:1000px){
+
+    .nav-links{
+        position:absolute;
+        top:70px;
+        left:0;
+        right:0;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        background:var(--white);
+        border:1px solid var(--border);
+        border-radius:16px;
+        padding:10px;
+        box-shadow:var(--shadow);
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:12px;
+    }
+
+    .menu-btn{
+        display:grid;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        min-height:auto;
+    }
+
+    .feature-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .feature-item:nth-child(2){
+        border-right:none;
+    }
+
+    .feature-item:nth-child(-n+2){
+        border-bottom:1px solid var(--border);
+    }
+
+    .resource-grid,
+    .semester-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .community-wrap{
+        grid-template-columns:1fr;
+    }
+
+    .program-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:700px){
+
+    .navbar{
+        top:10px;
+    }
+
+    .nav-actions .icon-btn:first-child{
+        display:none;
+    }
+
+    .hero{
+        padding-top:125px;
+    }
+
+    .hero h1{
+        font-size:3.2rem;
+        letter-spacing:-2.5px;
+    }
+
+    .dashboard{
+        margin-top:20px;
+    }
+
+    .float-one{
+        right:-5px;
+    }
+
+    .float-two{
+        left:-5px;
+    }
+
+    .feature-grid,
+    .resource-grid,
+    .semester-grid,
+    .opportunity-grid,
+    .support-grid,
+    .rules-grid{
+        grid-template-columns:1fr;
+    }
+
+    .feature-item{
+        border-right:none;
+        border-bottom:1px solid var(--border);
+    }
+
+    .feature-item:last-child{
+        border-bottom:none;
+    }
+
+    .program-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .section{
+        padding:70px 0;
+    }
+
+    .cta-box{
+        padding:40px 25px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+    }
+
+    .search-box{
+        width:100%;
+        min-width:100%;
+    }
+}
+
+@media(max-width:430px){
+
+    .hero h1{
+        font-size:2.8rem;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .hero-buttons .btn{
+        width:100%;
+    }
+
+    .mini-grid{
+        grid-template-columns:1fr;
+    }
+
+    .program-grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <!-- =========================================================
-     HEADER
+     NAVIGATION
 ========================================================= -->
+<nav class="navbar">
 
-<header>
-    <div class="container nav">
-
-        <a href="#home" class="brand">
-            <div class="brand-logo">E</div>
-
-            <div class="brand-text">
-                EduMate <span>Zone</span>
-            </div>
-        </a>
-
-        <nav class="nav-links" id="navLinks">
-            <a href="#home">Home</a>
-            <a href="#resources">Resources</a>
-            <a href="#opportunities">Opportunities</a>
-            <a href="#community">Community</a>
-            <a href="#support">Support</a>
-        </nav>
-
-        <div class="nav-actions">
-            <button class="icon-btn" id="themeBtn" title="Toggle theme">☾</button>
-
-            <button class="icon-btn menu-btn" id="menuBtn">
-                ☰
-            </button>
+    <a href="#home" class="logo">
+        <div class="logo-icon">E</div>
+        <div class="logo-text">
+            EduMate <span>Zone</span>
         </div>
+    </a>
 
+    <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#resources">Resources</a>
+        <a href="#opportunities">Opportunities</a>
+        <a href="#programs">Programs</a>
+        <a href="#community">Community</a>
+        <a href="#support">Support</a>
     </div>
-</header>
+
+    <div class="nav-actions">
+        <button class="icon-btn" id="themeBtn" title="Toggle theme">☾</button>
+        <button class="icon-btn menu-btn" id="menuBtn" title="Menu">☰</button>
+    </div>
+
+</nav>
 
 
 <!-- =========================================================
      HERO
 ========================================================= -->
-
-<main>
-
-<section class="hero" id="home">
+<header class="hero" id="home">
 
     <div class="container hero-grid">
 
         <div class="hero-content reveal">
 
             <div class="badge">
-                ✨ Your Educational Partner
+                <span class="badge-dot"></span>
+                Your Educational Partner
             </div>
 
             <h1>
                 Learn.
-                <span class="gradient-text">Share.</span>
+                <span>Share.</span>
                 Grow.
-                <br>
-                Together.
             </h1>
 
-            <p class="hero-description">
-                EduMate Zone is a student-focused academic community bringing
-                together study resources, university updates, scholarships,
-                admissions, internships, jobs, career guidance and opportunities
-                — all in one place.
+            <p class="hero-text">
+                EduMate Zone is a student-focused academic community
+                bringing together study resources, university updates,
+                scholarships, admissions, internships, jobs and career
+                opportunities — all in one place.
             </p>
 
             <div class="hero-buttons">
@@ -1285,50 +1440,56 @@
                 <a
                     href="https://chat.whatsapp.com/DuQeDwmpBmv9L35IfSlMuW"
                     target="_blank"
-                    class="btn btn-primary">
+                    class="btn btn-primary"
+                >
                     💬 Join WhatsApp Group
                 </a>
 
                 <a
-                    href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
-                    target="_blank"
-                    class="btn btn-outline">
-                    📢 Follow Channel
+                    href="#resources"
+                    class="btn btn-outline"
+                >
+                    Explore Resources →
                 </a>
 
             </div>
 
+            <p class="hero-note">
+                🎓 Built for students • 📚 Learn together • 🚀 Grow together
+            </p>
+
         </div>
 
 
-        <div class="hero-visual reveal">
+        <div class="dashboard reveal">
 
-            <div class="dashboard">
+            <div class="float-card float-one">
+                <span>+8</span>
+                Learning Areas
+            </div>
 
-                <div class="dash-top">
+            <div class="dashboard-main">
 
-                    <div class="dash-title">
-                        EduMate Dashboard
+                <div class="dashboard-top">
+                    <div class="dashboard-title">
+                        Student Hub
                     </div>
 
-                    <div class="online">
-                        ● Active Community
+                    <div class="live">
+                        ● ACTIVE
                     </div>
-
                 </div>
 
-                <div class="hero-card">
+                <div class="progress-box">
 
-                    <small>EDUMATE ZONE</small>
+                    <div class="progress-title">
+                        <span>Academic Resources</span>
+                        <span>76%</span>
+                    </div>
 
-                    <h3>
-                        Your Academic Journey,
-                        Simplified.
-                    </h3>
-
-                    <p style="font-size:12px;margin-top:8px;color:rgba(255,255,255,.78)">
-                        Resources • Opportunities • Guidance
-                    </p>
+                    <div class="progress">
+                        <span></span>
+                    </div>
 
                 </div>
 
@@ -1336,144 +1497,172 @@
 
                     <div class="mini-card">
                         <div class="mini-icon">📚</div>
-                        <strong>Study Resources</strong>
-                        <span>Notes & past papers</span>
+                        <strong>04</strong>
+                        <small>Semesters</small>
                     </div>
 
                     <div class="mini-card">
                         <div class="mini-icon">🎓</div>
-                        <strong>Admissions</strong>
-                        <span>Pakistan & abroad</span>
+                        <strong>12+</strong>
+                        <small>BS Programs</small>
                     </div>
 
                     <div class="mini-card">
                         <div class="mini-icon">💼</div>
-                        <strong>Career</strong>
-                        <span>Jobs & internships</span>
+                        <strong>06</strong>
+                        <small>Opportunity Areas</small>
                     </div>
 
                     <div class="mini-card">
-                        <div class="mini-icon">🏆</div>
-                        <strong>Scholarships</strong>
-                        <span>New opportunities</span>
+                        <div class="mini-icon">🤝</div>
+                        <strong>24/7</strong>
+                        <small>Community</small>
                     </div>
 
                 </div>
 
             </div>
 
-
-            <div class="floating-stat">
-
-                <div class="stat-icon">
-                    🎯
-                </div>
-
-                <div>
-                    <strong>Stay Updated</strong>
-                    <span>Academic opportunities</span>
-                </div>
-
+            <div class="float-card float-two">
+                <span>Daily</span>
+                Updates
             </div>
 
         </div>
 
     </div>
 
-</section>
+</header>
 
 
 <!-- =========================================================
-     WHAT YOU GET
+     FEATURE STRIP
 ========================================================= -->
+<div class="feature-strip">
+    <div class="container">
 
-<section>
+        <div class="feature-grid reveal">
+
+            <div class="feature-item">
+                <div class="feature-icon">📰</div>
+                <h3>Academic Updates</h3>
+                <p>Important educational information.</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">📖</div>
+                <h3>Study Materials</h3>
+                <p>Resources for your academic journey.</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🎓</div>
+                <h3>Admissions</h3>
+                <p>University and admission information.</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">💰</div>
+                <h3>Scholarships</h3>
+                <p>Discover funding opportunities.</p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- =========================================================
+     RESOURCES
+========================================================= -->
+<section class="section" id="resources">
 
     <div class="container">
 
-        <div class="section-heading reveal">
+        <div class="section-head reveal">
 
-            <div class="section-tag">
-                What You Get
+            <div class="section-label">
+                What We Provide
             </div>
 
-            <h2>
+            <h2 class="section-title">
                 Everything students need,
-                in one community.
+                in one place.
             </h2>
 
-            <p>
+            <p class="section-description">
                 From academic resources to career opportunities,
-                EduMate Zone keeps students connected and informed.
+                EduMate Zone brings useful student information together.
             </p>
 
         </div>
 
 
-        <div class="features">
+        <div class="resource-grid">
 
-            <div class="feature-card reveal">
-                <div class="feature-icon">📢</div>
+            <div class="resource-card reveal">
+                <div class="resource-number">01</div>
+                <div class="resource-icon">📰</div>
                 <h3>Academic Updates</h3>
-                <p>
-                    University, college, admission and latest educational updates.
-                </p>
+                <p>Stay connected with important academic information.</p>
+                <a href="#opportunities" class="resource-link">Explore →</a>
             </div>
 
-            <div class="feature-card reveal">
-                <div class="feature-icon">📚</div>
+            <div class="resource-card reveal">
+                <div class="resource-number">02</div>
+                <div class="resource-icon">📚</div>
                 <h3>Study Materials</h3>
-                <p>
-                    Notes, guess papers, pairing schemes, past papers and test sessions.
-                </p>
+                <p>Access semester resources and useful study material.</p>
+                <a href="#semesters" class="resource-link">View Materials →</a>
             </div>
 
-            <div class="feature-card reveal">
-                <div class="feature-icon">🎓</div>
+            <div class="resource-card reveal">
+                <div class="resource-number">03</div>
+                <div class="resource-icon">🎓</div>
                 <h3>Admissions</h3>
-                <p>
-                    Admission opportunities from universities and colleges in Pakistan and abroad.
-                </p>
+                <p>Find educational admission-related updates.</p>
+                <a href="#opportunities" class="resource-link">View Updates →</a>
             </div>
 
-            <div class="feature-card reveal">
-                <div class="feature-icon">💰</div>
+            <div class="resource-card reveal">
+                <div class="resource-number">04</div>
+                <div class="resource-icon">💰</div>
                 <h3>Scholarships</h3>
-                <p>
-                    Discover scholarship opportunities and funding information.
-                </p>
+                <p>Explore scholarship and funding opportunities.</p>
+                <a href="#opportunities" class="resource-link">Find Scholarships →</a>
             </div>
 
-            <div class="feature-card reveal">
-                <div class="feature-icon">💼</div>
+            <div class="resource-card reveal">
+                <div class="resource-number">05</div>
+                <div class="resource-icon">💼</div>
                 <h3>Jobs & Careers</h3>
-                <p>
-                    Job alerts, career guidance and professional opportunities.
-                </p>
+                <p>Discover job and career opportunities.</p>
+                <a href="#opportunities" class="resource-link">See Jobs →</a>
             </div>
 
-            <div class="feature-card reveal">
-                <div class="feature-icon">🚀</div>
+            <div class="resource-card reveal">
+                <div class="resource-number">06</div>
+                <div class="resource-icon">🧑‍💻</div>
                 <h3>Internships</h3>
-                <p>
-                    Local and international internships and student programs.
-                </p>
+                <p>Keep an eye on internship opportunities.</p>
+                <a href="#opportunities" class="resource-link">Explore →</a>
             </div>
 
-            <div class="feature-card reveal">
-                <div class="feature-icon">📝</div>
+            <div class="resource-card reveal">
+                <div class="resource-number">07</div>
+                <div class="resource-icon">📝</div>
                 <h3>Entry Tests</h3>
-                <p>
-                    Entry test updates and preparation guidance for students.
-                </p>
+                <p>Useful information related to entry tests.</p>
+                <a href="#community" class="resource-link">Learn More →</a>
             </div>
 
-            <div class="feature-card reveal">
-                <div class="feature-icon">💡</div>
-                <h3>Student Opportunities</h3>
-                <p>
-                    Business opportunities, government schemes and student programs.
-                </p>
+            <div class="resource-card reveal">
+                <div class="resource-number">08</div>
+                <div class="resource-icon">🎯</div>
+                <h3>Student Schemes</h3>
+                <p>Explore useful student-focused schemes and updates.</p>
+                <a href="#opportunities" class="resource-link">Explore →</a>
             </div>
 
         </div>
@@ -1484,26 +1673,24 @@
 
 
 <!-- =========================================================
-     SEMESTER RESOURCES
+     SEMESTERS
 ========================================================= -->
-
-<section class="semester-section" id="resources">
+<section class="section semester-section" id="semesters">
 
     <div class="container">
 
-        <div class="section-heading reveal">
+        <div class="section-head reveal">
 
-            <div class="section-tag">
+            <div class="section-label">
                 Study Resources
             </div>
 
-            <h2>
-                Find your semester resources.
+            <h2 class="section-title">
+                Semester Resource Library
             </h2>
 
-            <p>
-                Access the available semester resource folders
-                and keep your academic material organized.
+            <p class="section-description">
+                Quick access to available semester study resources.
             </p>
 
         </div>
@@ -1513,22 +1700,23 @@
 
             <div class="semester-card reveal">
 
-                <div class="semester-number">
-                    Semester 01
+                <div class="semester-no">
+                    SEMESTER 01
                 </div>
 
                 <h3>Semester 1</h3>
 
                 <p>
-                    Access study resources and academic material
-                    for first semester students.
+                    Study resources and academic material
+                    for first semester.
                 </p>
 
                 <a
-                    class="btn btn-primary"
                     href="https://drive.google.com/drive/folders/1OE05gKi6f1RuoFa64ZPaisopQfl9jOp"
-                    target="_blank">
-                    📂 Open Resources
+                    target="_blank"
+                    class="semester-btn"
+                >
+                    Open Drive →
                 </a>
 
             </div>
@@ -1536,21 +1724,23 @@
 
             <div class="semester-card reveal">
 
-                <div class="semester-number">
-                    Semester 02
+                <div class="semester-no">
+                    SEMESTER 02
                 </div>
 
                 <h3>Semester 2</h3>
 
                 <p>
-                    Study materials and resources for second semester students.
+                    Study resources and academic material
+                    for second semester.
                 </p>
 
                 <a
-                    class="btn btn-primary"
                     href="https://drive.google.com/drive/folders/1oRp55KLYog-QigmHVGmTCOM9KQg6D7OD"
-                    target="_blank">
-                    📂 Open Resources
+                    target="_blank"
+                    class="semester-btn"
+                >
+                    Open Drive →
                 </a>
 
             </div>
@@ -1558,43 +1748,44 @@
 
             <div class="semester-card reveal">
 
-                <div class="semester-number">
-                    Semester 03
+                <div class="semester-no">
+                    SEMESTER 03
                 </div>
 
                 <h3>Semester 3</h3>
 
                 <p>
-                    Academic resources for third semester students.
+                    Study resources and academic material
+                    for third semester.
                 </p>
 
                 <a
-                    class="btn btn-primary"
                     href="https://drive.google.com/drive/folders/1cZ5poXTnVUYLmc95Q6pmyYeRD_ElJum"
-                    target="_blank">
-                    📂 Open Resources
+                    target="_blank"
+                    class="semester-btn"
+                >
+                    Open Drive →
                 </a>
 
             </div>
 
 
-            <div class="semester-card coming reveal">
+            <div class="semester-card reveal">
 
-                <div class="semester-number">
-                    Semester 04
+                <div class="semester-no">
+                    SEMESTER 04
                 </div>
 
                 <h3>Semester 4</h3>
 
                 <p>
-                    Resources for Semester 4 will be added soon.
+                    Resources for this semester are currently
+                    being prepared.
                 </p>
 
-                <button
-                    class="btn btn-outline"
-                    disabled>
-                    ⏳ Coming Soon
-                </button>
+                <span class="coming">
+                    Coming Soon
+                </span>
 
             </div>
 
@@ -1608,133 +1799,105 @@
 <!-- =========================================================
      COMMUNITY
 ========================================================= -->
+<section class="section" id="community">
 
-<section class="community" id="community">
+    <div class="container">
 
-    <div class="container community-grid">
+        <div class="section-head reveal">
 
-        <div class="reveal">
-
-            <div class="section-tag">
-                Stay Connected
+            <div class="section-label">
+                Student Community
             </div>
 
-            <h2>
-                Your academic community is just one click away.
+            <h2 class="section-title">
+                Learn with people,
+                not alone.
             </h2>
 
-            <p>
-                Join EduMate Zone on WhatsApp and stay connected
-                with academic updates, resources and student opportunities.
+            <p class="section-description">
+                Join the EduMate community to stay connected with
+                students, updates and educational resources.
             </p>
-
-            <div class="hero-buttons">
-
-                <a
-                    href="https://chat.whatsapp.com/DuQeDwmpBmv9L35IfSlMuW"
-                    target="_blank"
-                    class="btn btn-whatsapp">
-                    💬 Join Community
-                </a>
-
-                <a
-                    href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
-                    target="_blank"
-                    class="btn btn-outline">
-                    📢 Open Channel
-                </a>
-
-            </div>
 
         </div>
 
 
-        <div class="community-box reveal">
+        <div class="community-wrap">
 
-            <div class="community-item">
+            <div class="community-panel community-big reveal">
 
-                <div class="community-left">
-
-                    <div class="icon">💬</div>
-
-                    <div>
-                        <strong>Main WhatsApp Group</strong>
-                        <span>Connect with students</span>
-                    </div>
-
+                <div class="section-label" style="color:#5eead4;">
+                    EduMate Community
                 </div>
+
+                <h2 style="font-size:2.3rem;line-height:1.1;margin-bottom:15px;">
+                    Your student network starts here.
+                </h2>
+
+                <p>
+                    Connect with the community, receive updates and
+                    stay informed about useful academic opportunities.
+                </p>
 
                 <a
                     href="https://chat.whatsapp.com/DuQeDwmpBmv9L35IfSlMuW"
                     target="_blank"
-                    class="small-btn">
-                    JOIN
+                    class="btn"
+                >
+                    Join Main Group →
                 </a>
 
             </div>
 
 
-            <div class="community-item">
+            <div class="community-panel reveal">
 
-                <div class="community-left">
+                <div class="community-list">
 
-                    <div class="icon">📢</div>
-
-                    <div>
-                        <strong>EduMate Channel</strong>
-                        <span>Daily educational updates</span>
-                    </div>
-
-                </div>
-
-                <a
-                    href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
-                    target="_blank"
-                    class="small-btn">
-                    FOLLOW
-                </a>
-
-            </div>
+                    <a
+                        href="https://chat.whatsapp.com/DuQeDwmpBmv9L35IfSlMuW"
+                        target="_blank"
+                        class="community-row"
+                    >
+                        <div class="community-row-icon">💬</div>
+                        <div>
+                            <strong>Main WhatsApp Group</strong>
+                            <span>Join the student community</span>
+                        </div>
+                    </a>
 
 
-            <div class="community-item">
-
-                <div class="community-left">
-
-                    <div class="icon">🌐</div>
-
-                    <div>
-                        <strong>All BS Programs</strong>
-                        <span>Connect across disciplines</span>
-                    </div>
-
-                </div>
-
-                <span class="small-btn">
-                    COMMUNITY
-                </span>
-
-            </div>
+                    <a
+                        href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
+                        target="_blank"
+                        class="community-row"
+                    >
+                        <div class="community-row-icon">📢</div>
+                        <div>
+                            <strong>EduMate Channel</strong>
+                            <span>Get important updates</span>
+                        </div>
+                    </a>
 
 
-            <div class="community-item">
+                    <a href="#programs" class="community-row">
+                        <div class="community-row-icon">🎓</div>
+                        <div>
+                            <strong>All BS Programs</strong>
+                            <span>Explore available fields</span>
+                        </div>
+                    </a>
 
-                <div class="community-left">
 
-                    <div class="icon">📚</div>
-
-                    <div>
-                        <strong>Academic Resources</strong>
-                        <span>Notes & study material</span>
-                    </div>
+                    <a href="#semesters" class="community-row">
+                        <div class="community-row-icon">📚</div>
+                        <div>
+                            <strong>Academic Resources</strong>
+                            <span>Find semester material</span>
+                        </div>
+                    </a>
 
                 </div>
-
-                <a
-                    href="#resources"
-                    class="small-btn">
-                    EXPLORE
-                </a>
 
             </div>
 
@@ -1748,56 +1911,71 @@
 <!-- =========================================================
      OPPORTUNITIES
 ========================================================= -->
-
-<section id="opportunities">
+<section class="section" id="opportunities">
 
     <div class="container">
 
-        <div class="section-heading reveal">
+        <div class="section-head reveal">
 
-            <div class="section-tag">
+            <div class="section-label">
                 Opportunities
             </div>
 
-            <h2>
-                Jobs, scholarships & opportunities.
+            <h2 class="section-title">
+                Find your next opportunity.
             </h2>
 
-            <p>
-                A preview of the kinds of opportunities shared
-                through EduMate Zone.
+            <p class="section-description">
+                Browse jobs, scholarships, government updates and
+                other opportunities shared through EduMate Zone.
             </p>
 
         </div>
 
 
-        <div class="filter-row">
+        <div class="opportunity-toolbar reveal">
 
-            <button class="filter-btn active" data-filter="all">
-                All
-            </button>
+            <div class="search-box">
+                🔎
+                <input
+                    type="text"
+                    id="opportunitySearch"
+                    placeholder="Search opportunities..."
+                >
+            </div>
 
-            <button class="filter-btn" data-filter="job">
-                Jobs
-            </button>
+            <div class="filters">
 
-            <button class="filter-btn" data-filter="scholarship">
-                Scholarships
-            </button>
+                <button class="filter active" data-filter="all">
+                    All
+                </button>
 
-            <button class="filter-btn" data-filter="government">
-                Government
-            </button>
+                <button class="filter" data-filter="jobs">
+                    Jobs
+                </button>
+
+                <button class="filter" data-filter="scholarships">
+                    Scholarships
+                </button>
+
+                <button class="filter" data-filter="government">
+                    Government
+                </button>
+
+            </div>
 
         </div>
 
 
-        <div class="opportunity-grid">
+        <div class="opportunity-grid" id="opportunityGrid">
 
 
             <!-- JOB -->
-
-            <article class="opportunity-card reveal" data-category="job">
+            <article
+                class="opportunity-card reveal"
+                data-category="jobs"
+                data-search="social media executive lahore night shift job"
+            >
 
                 <div class="opp-top">
 
@@ -1805,41 +1983,77 @@
                         📱
                     </div>
 
-                    <span class="opp-type">
+                    <span class="opp-tag">
                         JOB
                     </span>
 
                 </div>
 
-                <h3>
-                    Social Media Executive
-                </h3>
-
-                <p>
-                    Creative role involving social media management,
-                    content planning, audience engagement and growth.
-                </p>
+                <h3>Social Media Executive</h3>
 
                 <div class="opp-meta">
-
-                    <span>📍 Lahore</span>
-                    <span>🌙 Night Shift</span>
-                    <span>🛒 E-commerce</span>
-
+                    📍 Lahore • Night Shift
                 </div>
+
+                <p class="opp-description">
+                    Opportunity for a Social Media Executive.
+                </p>
 
                 <a
                     href="mailto:hr@firstmfg.com"
-                    class="btn btn-primary">
-                    📩 Application Info
+                    class="opp-link"
+                >
+                    Contact / Apply →
                 </a>
 
             </article>
 
 
             <!-- JOB -->
+            <article
+                class="opportunity-card reveal"
+                data-category="jobs"
+                data-search="ai video editor lahore ai video"
+            >
 
-            <article class="opportunity-card reveal" data-category="job">
+                <div class="opp-top">
+
+                    <div class="opp-icon">
+                        🤖
+                    </div>
+
+                    <span class="opp-tag">
+                        JOB
+                    </span>
+
+                </div>
+
+                <h3>AI Video Editor</h3>
+
+                <div class="opp-meta">
+                    📍 Lahore • AI Video
+                </div>
+
+                <p class="opp-description">
+                    Opportunity related to AI video editing.
+                </p>
+
+                <a
+                    href="mailto:mishal.searchopal@gmail.com"
+                    class="opp-link"
+                >
+                    Contact / Apply →
+                </a>
+
+            </article>
+
+
+            <!-- JOB -->
+            <article
+                class="opportunity-card reveal"
+                data-category="jobs"
+                data-search="ugc video editor islamabad ugc"
+            >
 
                 <div class="opp-top">
 
@@ -1847,124 +2061,79 @@
                         🎬
                     </div>
 
-                    <span class="opp-type">
+                    <span class="opp-tag">
                         JOB
                     </span>
 
                 </div>
 
-                <h3>
-                    AI Video Editor
-                </h3>
-
-                <p>
-                    Video editing opportunity for candidates interested
-                    in AI-powered video content.
-                </p>
+                <h3>UGC Video Editor</h3>
 
                 <div class="opp-meta">
-
-                    <span>📍 Lahore</span>
-                    <span>🤖 AI Video</span>
-
+                    📍 Islamabad • UGC
                 </div>
+
+                <p class="opp-description">
+                    Opportunity related to UGC video editing.
+                </p>
 
                 <a
                     href="mailto:mishal.searchopal@gmail.com"
-                    class="btn btn-primary">
-                    📩 Contact
-                </a>
-
-            </article>
-
-
-            <!-- JOB -->
-
-            <article class="opportunity-card reveal" data-category="job">
-
-                <div class="opp-top">
-
-                    <div class="opp-icon">
-                        🎥
-                    </div>
-
-                    <span class="opp-type">
-                        JOB
-                    </span>
-
-                </div>
-
-                <h3>
-                    UGC Video Editor
-                </h3>
-
-                <p>
-                    Video editing opportunity for UGC content
-                    and creative digital media.
-                </p>
-
-                <div class="opp-meta">
-
-                    <span>📍 Islamabad</span>
-                    <span>🎥 UGC</span>
-
-                </div>
-
-                <a
-                    href="mailto:mishal.searchopal@gmail.com"
-                    class="btn btn-primary">
-                    📩 Contact
+                    class="opp-link"
+                >
+                    Contact / Apply →
                 </a>
 
             </article>
 
 
             <!-- SCHOLARSHIP -->
-
-            <article class="opportunity-card reveal" data-category="scholarship">
+            <article
+                class="opportunity-card reveal"
+                data-category="scholarships"
+                data-search="gates cambridge scholarship 2027 uk postgraduate fully funded"
+            >
 
                 <div class="opp-top">
 
                     <div class="opp-icon">
-                        🇬🇧
+                        🎓
                     </div>
 
-                    <span class="opp-type">
+                    <span class="opp-tag">
                         SCHOLARSHIP
                     </span>
 
                 </div>
 
-                <h3>
-                    Gates Cambridge Scholarship 2027
-                </h3>
-
-                <p>
-                    Fully funded postgraduate scholarship opportunity
-                    at the University of Cambridge.
-                </p>
+                <h3>Gates Cambridge Scholarship</h3>
 
                 <div class="opp-meta">
-
-                    <span>🇬🇧 UK</span>
-                    <span>🎓 Postgraduate</span>
-                    <span>💯 Fully Funded</span>
-
+                    🇬🇧 UK • Postgraduate • Fully Funded
                 </div>
+
+                <p class="opp-description">
+                    Scholarship information for the Gates Cambridge
+                    Scholarship 2027 in the UK.
+                </p>
 
                 <a
                     href="https://globalgleaning.com/gates-cambridge-scholarship-2027-in-uk-fully-funded/"
                     target="_blank"
-                    class="btn btn-primary">
-                    🔗 View Opportunity
+                    class="opp-link"
+                >
+                    View Information →
                 </a>
 
             </article>
 
 
             <!-- GOVERNMENT -->
-
-            <article class="opportunity-card reveal" data-category="government">
+            <article
+                class="opportunity-card reveal"
+                data-category="government"
+                data-search="punjab rural health centre update health punjab"
+            >
 
                 <div class="opp-top">
 
@@ -1972,80 +2141,77 @@
                         🏥
                     </div>
 
-                    <span class="opp-type">
+                    <span class="opp-tag">
                         GOVERNMENT
                     </span>
 
                 </div>
 
-                <h3>
-                    Punjab Rural Health Centre Update
-                </h3>
-
-                <p>
-                    An educational/news update regarding the reported
-                    plan to upgrade 300 Rural Health Centres in Punjab.
-                </p>
+                <h3>Punjab Rural Health Centre Update</h3>
 
                 <div class="opp-meta">
-
-                    <span>🇵🇰 Punjab</span>
-                    <span>🏥 Health</span>
-
+                    📍 Punjab • Health
                 </div>
 
-                <a
-                    href="#"
-                    onclick="showNotice(event)"
-                    class="btn btn-outline">
-                    ℹ️ Read Update
-                </a>
+                <p class="opp-description">
+                    Government-related health update for Punjab.
+                </p>
+
+                <button
+                    class="btn btn-outline notice-btn"
+                    style="padding:9px 12px;font-size:.76rem;"
+                >
+                    View Notice
+                </button>
 
             </article>
 
 
-            <!-- GENERAL -->
-
-            <article class="opportunity-card reveal" data-category="all">
+            <!-- CHANNEL -->
+            <article
+                class="opportunity-card reveal"
+                data-category="all"
+                data-search="more updates daily whatsapp channel"
+            >
 
                 <div class="opp-top">
 
                     <div class="opp-icon">
-                        🚀
+                        📢
                     </div>
 
-                    <span class="opp-type">
-                        MORE
+                    <span class="opp-tag">
+                        UPDATES
                     </span>
 
                 </div>
 
-                <h3>
-                    More Opportunities Coming
-                </h3>
-
-                <p>
-                    Jobs, internships, scholarships, admissions,
-                    competitions and student programs can be added here.
-                </p>
+                <h3>More Updates Daily</h3>
 
                 <div class="opp-meta">
-
-                    <span>💼 Jobs</span>
-                    <span>🎓 Scholarships</span>
-                    <span>🚀 Internships</span>
-
+                    📲 EduMate WhatsApp Channel
                 </div>
+
+                <p class="opp-description">
+                    Follow the channel for additional updates and
+                    opportunities.
+                </p>
 
                 <a
                     href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
                     target="_blank"
-                    class="btn btn-primary">
-                    📢 Follow Updates
+                    class="opp-link"
+                >
+                    Follow Channel →
                 </a>
 
             </article>
 
+        </div>
+
+
+        <div class="no-results" id="noResults">
+            No matching opportunities found.
         </div>
 
     </div>
@@ -2054,45 +2220,91 @@
 
 
 <!-- =========================================================
-     ALL BS PROGRAMS
+     BS PROGRAMS
 ========================================================= -->
-
-<section class="bs-section">
+<section class="section" id="programs">
 
     <div class="container">
 
-        <div class="section-heading reveal">
+        <div class="section-head reveal">
 
-            <div class="section-tag">
-                Student Community
+            <div class="section-label">
+                Academic Fields
             </div>
 
-            <h2>
-                One community for BS students.
+            <h2 class="section-title">
+                Explore BS Programs
             </h2>
 
-            <p>
-                Connect with talented students from different
-                academic disciplines, share knowledge and grow together.
+            <p class="section-description">
+                Explore different academic fields covered by the
+                EduMate support community.
             </p>
 
         </div>
 
 
-        <div class="bs-grid">
+        <div class="program-grid">
 
-            <div class="bs-item reveal">💻 Computer Science</div>
-            <div class="bs-item reveal">🖥️ Information Technology</div>
-            <div class="bs-item reveal">⚙️ Engineering</div>
-            <div class="bs-item reveal">🤖 Mechatronics</div>
-            <div class="bs-item reveal">📊 Accounting</div>
-            <div class="bs-item reveal">💰 Finance</div>
-            <div class="bs-item reveal">📈 Economics</div>
-            <div class="bs-item reveal">📣 Marketing</div>
-            <div class="bs-item reveal">🎨 Designing</div>
-            <div class="bs-item reveal">🔍 SEO</div>
-            <div class="bs-item reveal">📱 App Development</div>
-            <div class="bs-item reveal">🎓 Other BS Programs</div>
+            <div class="program reveal">
+                <div class="program-icon">💻</div>
+                <span>Computer Science</span>
+            </div>
+
+            <div class="program reveal">
+                <div class="program-icon">🖥️</div>
+                <span>Information Technology</span>
+            </div>
+
+            <div class="program reveal">
+                <div class="program-icon">⚙️</div>
+                <span>Engineering</span>
+            </div>
+
+            <div class="program reveal">
+                <div class="program-icon">🤖</div>
+                <span>Mechatronics</span>
+            </div>
+
+            <div class="program reveal">
+                <div class="program-icon">📊</div>
+                <span>Accounting</span>
+            </div>
+
+            <div class="program reveal">
+                <div class="program-icon">💰</div>
+                <span>Finance</span>
+            </div>
+
+            <div class="program reveal">
+                <div class="program-icon">📈</div>
+                <span>Economics</span>
+            </div>
+
+            <div class="program reveal">
+                <div class="program-icon">📣</div>
+                <span>Marketing</span>
+            </div>
+
+            <div class="program reveal">
+                <div class="program-icon">🎨</div>
+                <span>Designing</span>
+            </div>
+
+            <div class="program reveal">
+                <div class="program-icon">🔎</div>
+                <span>SEO</span>
+            </div>
+
+            <div class="program reveal">
+                <div class="program-icon">📱</div>
+                <span>App Development</span>
+            </div>
+
+            <div class="program reveal">
+                <div class="program-icon">➕</div>
+                <span>Other BS Programs</span>
+            </div>
 
         </div>
 
@@ -2104,24 +2316,24 @@
 <!-- =========================================================
      SUPPORT
 ========================================================= -->
-
-<section id="support">
+<section class="section support-section" id="support">
 
     <div class="container">
 
-        <div class="section-heading reveal">
+        <div class="section-head reveal">
 
-            <div class="section-tag">
+            <div class="section-label">
                 Admin Support
             </div>
 
-            <h2>
-                Need academic guidance?
+            <h2 class="section-title">
+                Need guidance?
+                Talk to the right support.
             </h2>
 
-            <p>
-                Find the relevant support area for your academic
-                or career-related query.
+            <p class="section-description">
+                EduMate support members are organized around
+                different academic areas.
             </p>
 
         </div>
@@ -2131,23 +2343,27 @@
 
             <div class="support-card reveal">
 
-                <div class="support-icon">
-                    💻
+                <div class="support-avatar">
+                    AK
                 </div>
 
-                <h3>
-                    Computer & IT
-                </h3>
+                <h3>Awab Khan</h3>
+
+                <div class="support-role">
+                    BS CS, IT & Computer-related Fields
+                </div>
 
                 <p>
-                    Support for CS, IT and computer-related academic queries.
+                    Support for Computer Science, IT and
+                    computer-related academic queries.
                 </p>
 
                 <a
                     href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
                     target="_blank"
-                    class="btn btn-outline">
-                    Contact Support
+                    class="support-contact"
+                >
+                    +92 327 4022191
                 </a>
 
             </div>
@@ -2155,24 +2371,27 @@
 
             <div class="support-card reveal">
 
-                <div class="support-icon">
-                    📊
+                <div class="support-avatar">
+                    A
                 </div>
 
-                <h3>
-                    Business & Finance
-                </h3>
+                <h3>AAM09</h3>
+
+                <div class="support-role">
+                    Business, Finance, Marketing, SEO & App Dev
+                </div>
 
                 <p>
-                    Support related to accounting, finance, economics,
-                    marketing, SEO, designing and app development.
+                    Support for business, finance, marketing,
+                    SEO and app development areas.
                 </p>
 
                 <a
                     href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
                     target="_blank"
-                    class="btn btn-outline">
-                    Contact Support
+                    class="support-contact"
+                >
+                    +92 329 3299983
                 </a>
 
             </div>
@@ -2180,22 +2399,26 @@
 
             <div class="support-card reveal">
 
-                <div class="support-icon">
-                    ⚙️
+                <div class="support-avatar">
+                    D
                 </div>
 
-                <h3>
+                <h3>Damiss</h3>
+
+                <div class="support-role">
                     Engineering & Mechatronics
-                </h3>
+                </div>
 
                 <p>
-                    Guidance for engineering and mechatronics-related queries.
+                    Support for Engineering and Mechatronics
+                    related queries.
                 </p>
 
                 <a
                     href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
                     target="_blank"
-                    class="btn btn-outline">
+                    class="support-contact"
+                >
                     Contact Support
                 </a>
 
@@ -2211,69 +2434,71 @@
 <!-- =========================================================
      COMMUNITY RULES
 ========================================================= -->
-
-<section>
+<section class="section">
 
     <div class="container">
 
-        <div class="section-heading reveal">
+        <div class="section-head reveal">
 
-            <div class="section-tag">
+            <div class="section-label">
                 Community Guidelines
             </div>
 
-            <h2>
-                Keep EduMate Zone useful for everyone.
+            <h2 class="section-title">
+                Keep the community useful.
             </h2>
 
-            <p>
-                A focused community helps students find useful
-                academic information without unnecessary noise.
+            <p class="section-description">
+                A few simple rules help everyone get more value
+                from the EduMate community.
             </p>
 
         </div>
 
 
-        <div class="rules-box">
+        <div class="rules-grid">
 
             <div class="rule reveal">
-                <div class="rule-icon">✓</div>
-                <span>Keep conversations within reasonable limits.</span>
+                <div class="rule-number">01</div>
+                <p>
+                    Keep conversations within reasonable limits.
+                </p>
             </div>
 
             <div class="rule reveal">
-                <div class="rule-icon">✓</div>
-                <span>Keep discussions related to studies and academic activities.</span>
+                <div class="rule-number">02</div>
+                <p>
+                    Keep discussions related to studies and
+                    academic activities.
+                </p>
             </div>
 
             <div class="rule reveal">
-                <div class="rule-icon">✓</div>
-                <span>Use stickers minimally.</span>
+                <div class="rule-number">03</div>
+                <p>
+                    Use stickers minimally.
+                </p>
             </div>
 
             <div class="rule reveal">
-                <div class="rule-icon">✓</div>
-                <span>Avoid irrelevant posts, messages and shares.</span>
+                <div class="rule-number">04</div>
+                <p>
+                    Avoid irrelevant posts, messages and shares.
+                </p>
             </div>
 
             <div class="rule reveal">
-                <div class="rule-icon">✓</div>
-                <span>Do not share unrelated group or channel links.</span>
+                <div class="rule-number">05</div>
+                <p>
+                    Do not share unrelated group/channel links.
+                </p>
             </div>
 
             <div class="rule reveal">
-                <div class="rule-icon">✓</div>
-                <span>Need something? Tag the relevant support/admin team.</span>
-            </div>
-
-            <div class="rule reveal">
-                <div class="rule-icon">✓</div>
-                <span>Respect other students and keep communication professional.</span>
-            </div>
-
-            <div class="rule reveal">
-                <div class="rule-icon">✓</div>
-                <span>Share EduMate Zone with classmates who may benefit.</span>
+                <div class="rule-number">06</div>
+                <p>
+                    Need something? Tag the relevant support/admin team.
+                </p>
             </div>
 
         </div>
@@ -2286,7 +2511,6 @@
 <!-- =========================================================
      CTA
 ========================================================= -->
-
 <section class="cta">
 
     <div class="container">
@@ -2294,32 +2518,23 @@
         <div class="cta-box reveal">
 
             <h2>
-                Ready to stay connected?
+                Your next academic opportunity
+                could be one click away.
             </h2>
 
             <p>
-                Join EduMate Zone and stay updated with academic
-                resources, opportunities, admissions, scholarships,
-                jobs and more.
+                Join EduMate Zone and stay connected with study
+                resources, academic updates, opportunities and
+                student support.
             </p>
 
-            <div class="hero-buttons">
-
-                <a
-                    href="https://chat.whatsapp.com/DuQeDwmpBmv9L35IfSlMuW"
-                    target="_blank"
-                    class="btn btn-whatsapp">
-                    💬 Join WhatsApp
-                </a>
-
-                <a
-                    href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
-                    target="_blank"
-                    class="btn btn-outline">
-                    📢 Follow Channel
-                </a>
-
-            </div>
+            <a
+                href="https://chat.whatsapp.com/DuQeDwmpBmv9L35IfSlMuW"
+                target="_blank"
+                class="btn"
+            >
+                Join EduMate Community →
+            </a>
 
         </div>
 
@@ -2327,105 +2542,111 @@
 
 </section>
 
-</main>
-
 
 <!-- =========================================================
      FOOTER
 ========================================================= -->
-
 <footer>
 
     <div class="container">
 
         <div class="footer-grid">
 
-            <div>
+            <div class="footer-brand">
 
-                <div class="brand">
-
-                    <div class="brand-logo">
-                        E
-                    </div>
-
-                    <div class="brand-text">
+                <a href="#home" class="logo">
+                    <div class="logo-icon">E</div>
+                    <div class="logo-text">
                         EduMate <span>Zone</span>
                     </div>
+                </a>
 
-                </div>
-
-                <p class="footer-description">
-                    Your Educational Partner — Learn, Share,
-                    Grow Together. A student-focused academic
-                    community for resources, updates and opportunities.
+                <p>
+                    EduMate Zone — Your Educational Partner.
+                    Academic updates, study resources, scholarships,
+                    admissions, internships, jobs and career opportunities
+                    for students.
                 </p>
 
             </div>
 
 
-            <div class="footer-col">
+            <div>
 
-                <h4>Explore</h4>
+                <h3 class="footer-title">
+                    Explore
+                </h3>
 
-                <a href="#resources">Resources</a>
-                <a href="#opportunities">Opportunities</a>
-                <a href="#community">Community</a>
-                <a href="#support">Support</a>
-
-            </div>
-
-
-            <div class="footer-col">
-
-                <h4>Resources</h4>
-
-                <a href="https://drive.google.com/drive/folders/1OE05gKi6f1RuoFa64ZPaisopQfl9jOp"
-                   target="_blank">
-                    Semester 1
-                </a>
-
-                <a href="https://drive.google.com/drive/folders/1oRp55KLYog-QigmHVGmTCOM9KQg6D7OD"
-                   target="_blank">
-                    Semester 2
-                </a>
-
-                <a href="https://drive.google.com/drive/folders/1cZ5poXTnVUYLmc95Q6pmyYeRD_ElJum"
-                   target="_blank">
-                    Semester 3
-                </a>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#resources">Resources</a>
+                    <a href="#opportunities">Opportunities</a>
+                    <a href="#programs">Programs</a>
+                </div>
 
             </div>
 
 
-            <div class="footer-col">
+            <div>
 
-                <h4>Community</h4>
+                <h3 class="footer-title">
+                    Resources
+                </h3>
 
-                <a
-                    href="https://chat.whatsapp.com/DuQeDwmpBmv9L35IfSlMuW"
-                    target="_blank">
-                    WhatsApp Group
-                </a>
+                <div class="footer-links">
+                    <a href="#semesters">Semester Materials</a>
+                    <a href="#opportunities">Jobs</a>
+                    <a href="#opportunities">Scholarships</a>
+                    <a href="#opportunities">Government Updates</a>
+                </div>
 
-                <a
-                    href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
-                    target="_blank">
-                    WhatsApp Channel
-                </a>
+            </div>
 
-                <a href="#support">
-                    Admin Support
-                </a>
+
+            <div>
+
+                <h3 class="footer-title">
+                    Community
+                </h3>
+
+                <div class="footer-links">
+                    <a
+                        href="https://chat.whatsapp.com/DuQeDwmpBmv9L35IfSlMuW"
+                        target="_blank"
+                    >
+                        WhatsApp Group
+                    </a>
+
+                    <a
+                        href="https://whatsapp.com/channel/0029Vb5g6VA7DAX05jhWo20o"
+                        target="_blank"
+                    >
+                        WhatsApp Channel
+                    </a>
+
+                    <a href="#support">
+                        Admin Support
+                    </a>
+
+                    <a href="#community">
+                        Community Rules
+                    </a>
+                </div>
 
             </div>
 
         </div>
 
 
-        <div class="copyright">
+        <div class="footer-bottom">
 
-            © <span id="year"></span> EduMate Zone.
-            Learn • Share • Grow Together.
+            <span>
+                © <span id="year"></span> EduMate Zone. All rights reserved.
+            </span>
+
+            <span>
+                Learn • Share • Grow Together
+            </span>
 
         </div>
 
@@ -2435,221 +2656,329 @@
 
 
 <!-- =========================================================
-     JAVASCRIPT
+     MODAL
 ========================================================= -->
+<div class="modal" id="noticeModal">
+
+    <div class="modal-box">
+
+        <button
+            class="modal-close"
+            id="modalClose"
+        >
+            ✕
+        </button>
+
+        <div class="section-label">
+            Government Update
+        </div>
+
+        <h2>
+            Punjab Rural Health Centre Update
+        </h2>
+
+        <p>
+            This section contains the Punjab Rural Health Centre
+            update listed in the EduMate Zone opportunity section.
+        </p>
+
+        <button
+            class="btn btn-primary"
+            id="modalOkay"
+        >
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+<div class="toast" id="toast">
+    Theme updated.
+</div>
+
 
 <script>
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-    /* =========================================================
-       MOBILE MENU
-    ========================================================= */
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
 
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
+menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+});
 
-    menuBtn.addEventListener("click", () => {
-        navLinks.classList.toggle("show");
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("show");
+    });
+});
 
-        menuBtn.textContent =
-            navLinks.classList.contains("show") ? "✕" : "☰";
+
+/* =========================================================
+   DARK / LIGHT THEME
+========================================================= */
+
+const themeBtn = document.getElementById("themeBtn");
+
+const savedTheme = localStorage.getItem("edumate-theme");
+
+if(savedTheme === "dark"){
+    document.body.classList.add("dark");
+    themeBtn.textContent = "☀";
+}
+
+themeBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+    const isDark = document.body.classList.contains("dark");
+
+    localStorage.setItem(
+        "edumate-theme",
+        isDark ? "dark" : "light"
+    );
+
+    themeBtn.textContent = isDark ? "☀" : "☾";
+
+    showToast(
+        isDark
+        ? "Dark mode enabled."
+        : "Light mode enabled."
+    );
+});
+
+
+/* =========================================================
+   OPPORTUNITY FILTER
+========================================================= */
+
+const filterButtons = document.querySelectorAll(".filter");
+const opportunityCards = document.querySelectorAll(".opportunity-card");
+const searchInput = document.getElementById("opportunitySearch");
+const noResults = document.getElementById("noResults");
+
+let currentFilter = "all";
+
+
+function filterOpportunities(){
+
+    const searchValue =
+        searchInput.value.toLowerCase().trim();
+
+    let visibleCount = 0;
+
+    opportunityCards.forEach(card => {
+
+        const category =
+            card.dataset.category.toLowerCase();
+
+        const searchableText =
+            card.dataset.search.toLowerCase();
+
+        const categoryMatch =
+            currentFilter === "all" ||
+            category === currentFilter ||
+            category === "all";
+
+        const searchMatch =
+            searchableText.includes(searchValue);
+
+        if(categoryMatch && searchMatch){
+
+            card.style.display = "";
+
+            visibleCount++;
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
     });
 
+    noResults.style.display =
+        visibleCount === 0 ? "block" : "none";
+}
 
-    document.querySelectorAll(".nav-links a").forEach(link => {
 
-        link.addEventListener("click", () => {
+filterButtons.forEach(button => {
 
-            navLinks.classList.remove("show");
-            menuBtn.textContent = "☰";
+    button.addEventListener("click", () => {
 
+        filterButtons.forEach(btn => {
+            btn.classList.remove("active");
         });
 
+        button.classList.add("active");
+
+        currentFilter =
+            button.dataset.filter;
+
+        filterOpportunities();
+
     });
 
+});
 
-    /* =========================================================
-       DARK MODE
-    ========================================================= */
 
-    const themeBtn = document.getElementById("themeBtn");
+searchInput.addEventListener(
+    "input",
+    filterOpportunities
+);
 
-    const savedTheme = localStorage.getItem("edumate-theme");
 
-    if (savedTheme === "dark") {
+/* =========================================================
+   MODAL
+========================================================= */
 
-        document.body.classList.add("dark");
-        themeBtn.textContent = "☀";
+const noticeModal =
+    document.getElementById("noticeModal");
 
+const modalClose =
+    document.getElementById("modalClose");
+
+const modalOkay =
+    document.getElementById("modalOkay");
+
+document.querySelectorAll(".notice-btn")
+.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        noticeModal.classList.add("show");
+
+    });
+
+});
+
+
+function closeModal(){
+    noticeModal.classList.remove("show");
+}
+
+modalClose.addEventListener("click", closeModal);
+modalOkay.addEventListener("click", closeModal);
+
+noticeModal.addEventListener("click", event => {
+
+    if(event.target === noticeModal){
+        closeModal();
     }
 
-    themeBtn.addEventListener("click", () => {
-
-        document.body.classList.toggle("dark");
-
-        const isDark =
-            document.body.classList.contains("dark");
-
-        themeBtn.textContent =
-            isDark ? "☀" : "☾";
-
-        localStorage.setItem(
-            "edumate-theme",
-            isDark ? "dark" : "light"
-        );
-
-    });
+});
 
 
-    /* =========================================================
-       OPPORTUNITY FILTER
-    ========================================================= */
+document.addEventListener("keydown", event => {
 
-    const filterButtons =
-        document.querySelectorAll(".filter-btn");
+    if(event.key === "Escape"){
+        closeModal();
+    }
 
-    const opportunityCards =
-        document.querySelectorAll(".opportunity-card");
+});
 
-    filterButtons.forEach(button => {
 
-        button.addEventListener("click", () => {
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
 
-            filterButtons.forEach(btn =>
-                btn.classList.remove("active")
-            );
+const revealElements =
+    document.querySelectorAll(".reveal");
 
-            button.classList.add("active");
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
 
-            const filter =
-                button.dataset.filter;
+            entries.forEach(entry => {
 
-            opportunityCards.forEach(card => {
+                if(entry.isIntersecting){
 
-                const category =
-                    card.dataset.category;
+                    entry.target.classList.add("visible");
 
-                if (
-                    filter === "all" ||
-                    category === filter
-                ) {
-
-                    card.style.display = "block";
-
-                } else {
-
-                    card.style.display = "none";
+                    revealObserver.unobserve(
+                        entry.target
+                    );
 
                 }
 
             });
 
-        });
-
-    });
-
-
-    /* =========================================================
-       SCROLL REVEAL
-    ========================================================= */
-
-    const revealElements =
-        document.querySelectorAll(".reveal");
-
-    const revealObserver =
-        new IntersectionObserver(
-            entries => {
-
-                entries.forEach(entry => {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add("visible");
-
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                });
-
-            },
-            {
-                threshold: .12
-            }
-        );
-
-    revealElements.forEach(element => {
-
-        revealObserver.observe(element);
-
-    });
+        },
+        {
+            threshold:.12
+        }
+    );
 
 
-    /* =========================================================
-       CURRENT YEAR
-    ========================================================= */
-
-    document.getElementById("year").textContent =
-        new Date().getFullYear();
+revealElements.forEach(element => {
+    revealObserver.observe(element);
+});
 
 
-    /* =========================================================
-       GOVERNMENT UPDATE NOTICE
-    ========================================================= */
+/* =========================================================
+   CURRENT YEAR
+========================================================= */
 
-    function showNotice(event) {
+document.getElementById("year").textContent =
+    new Date().getFullYear();
 
-        event.preventDefault();
 
-        alert(
-            "EduMate Zone Government Update:\n\n" +
-            "A post shared by the platform reported a plan to " +
-            "convert 300 Rural Health Centres in Punjab into " +
-            "fully functioning hospitals.\n\n" +
-            "For the latest verified details, please check " +
-            "official government sources."
-        );
+/* =========================================================
+   TOAST
+========================================================= */
+
+const toast =
+    document.getElementById("toast");
+
+let toastTimer;
+
+function showToast(message){
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    },2500);
+
+}
+
+
+/* =========================================================
+   CLOSE MENU WHEN CLICKING OUTSIDE
+========================================================= */
+
+document.addEventListener("click", event => {
+
+    if(
+        window.innerWidth <= 1000 &&
+        !event.target.closest(".navbar")
+    ){
+
+        navLinks.classList.remove("show");
 
     }
 
+});
 
-    /* =========================================================
-       SMOOTH CARD INTERACTION
-    ========================================================= */
 
-    document.querySelectorAll(".feature-card, .semester-card, .support-card")
-        .forEach(card => {
+/* =========================================================
+   INITIAL FILTER
+========================================================= */
 
-            card.addEventListener("mousemove", event => {
-
-                const rect =
-                    card.getBoundingClientRect();
-
-                const x =
-                    event.clientX - rect.left;
-
-                const y =
-                    event.clientY - rect.top;
-
-                const rotateX =
-                    ((y / rect.height) - .5) * -2;
-
-                const rotateY =
-                    ((x / rect.width) - .5) * 2;
-
-                card.style.transform =
-                    `translateY(-5px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-
-            });
-
-            card.addEventListener("mouseleave", () => {
-
-                card.style.transform = "";
-
-            });
-
-        });
+filterOpportunities();
 
 </script>
 
